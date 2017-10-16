@@ -1,1 +1,1 @@
-# angular-page-visibility-
+# Angular Page Visibility
