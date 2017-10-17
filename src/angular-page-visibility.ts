@@ -1,0 +1,1 @@
+export {AngularPageVisibilityModule} from './angular-page-visibility.module';
