@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {AngularPageVisibilityModule} from '../../../src/angular-page-visibility';
+import {PageVisibilityService} from "../../../src/angular-page-visibility";
 
 @NgModule( {
     declarations : [
@@ -16,4 +17,7 @@ import {AngularPageVisibilityModule} from '../../../src/angular-page-visibility'
     bootstrap : [ AppComponent ]
 } )
 export class AppModule {
+    constructor(private pageVisibiltyService: PageVisibilityService){
+        this.pageVisibiltyService.listenPageVisibility();
+    }
 }
