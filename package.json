@@ -5,7 +5,8 @@
   "main": "./dist/angular-page-visibility.js",
   "typings": "./dist/angular-page-visibility.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "src/**/*.ts"
   ],
   "repository": {
     "type": "git",
