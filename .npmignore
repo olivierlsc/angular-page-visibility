@@ -7,3 +7,4 @@ src/**/*.map
 .npmignore
 tslint.json
 tsconfig.json
+.idea/

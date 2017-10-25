@@ -17,4 +17,5 @@ import {PageVisibilityService} from "../../../src/angular-page-visibility";
     bootstrap : [ AppComponent ]
 } )
 export class AppModule {
+
 }

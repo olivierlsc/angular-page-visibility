@@ -2,7 +2,11 @@
   "name": "angular-page-visibility",
   "version": "4.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/angular-page-visibility.js",
+  "typings": "./dist/angular-page-visibility.d.ts",
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/olivierlsc/angular-page-visibility.git"
