@@ -9,6 +9,7 @@
     "experimentalDecorators": true,
     "removeComments": true,
     "target": "es5",
+    "module": "es2015",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -17,6 +18,9 @@
       "dom"
     ]
   },
+  "files": [
+    "src/angular-page-visibility.ts"
+  ],
   "exclude": [
     "node_modules",
     "testing",
