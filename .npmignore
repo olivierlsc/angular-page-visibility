@@ -1,0 +1,9 @@
+testing/
+src/**/*.js
+src/**/*.map
+.angular-cli.json
+.editorconfig
+.gitignore
+.npmignore
+tslint.json
+tsconfig.json
