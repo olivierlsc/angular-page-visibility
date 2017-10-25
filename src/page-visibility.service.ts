@@ -16,6 +16,7 @@ export class PageVisibilityService {
 
     constructor() {
         this.init();
+        this.listenPageVisibility();
     }
 
     isPageVisible(): boolean {
@@ -40,7 +41,7 @@ export class PageVisibilityService {
         }
     }
 
-    listenPageVisibility(): void {
+    private listenPageVisibility(): void {
         document.addEventListener( this.visibilityChange, () => {
             if ( this.isPageVisible() ) {
                 this.onPageVisibleSource.next();
