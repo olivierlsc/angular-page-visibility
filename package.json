@@ -13,6 +13,19 @@
     "url": "https://github.com/olivierlsc/angular-page-visibility/issues"
   },
   "homepage": "https://github.com/olivierlsc/angular-page-visibility#readme",
+  "keywords": [
+    "angular4",
+    "ng4",
+    "angular4 component",
+    "angular4 directive",
+    "angular4 service",
+    "angular4 pipe",
+    "page visibility",
+    "page not visibility",
+    "page visibility api",
+    "page active",
+    "page not active"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
