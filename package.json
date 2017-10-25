@@ -1,6 +1,6 @@
 {
   "name": "angular-page-visibility",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "",
   "main": "./dist/angular-page-visibility.js",
   "typings": "./dist/angular-page-visibility.d.ts",
