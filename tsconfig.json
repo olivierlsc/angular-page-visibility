@@ -18,12 +18,13 @@
       "dom"
     ]
   },
-  "files": [
-    "src/angular-page-visibility.ts"
-  ],
   "exclude": [
     "node_modules",
     "testing",
     "dist"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "genDir": "./dist/ngfactory",
+    "debug": false
+  }
 }
