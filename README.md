@@ -34,8 +34,8 @@ Then, use it in your component :
 
 ```bash
 import { Component, OnDestroy, Inject, OnInit } from '@angular/core';
-import {PageVisibilityService} from 'angular-page-visibility';
-import {Subscription} from 'rxjs/Subscription';
+import { PageVisibilityService } from 'angular-page-visibility';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component( {
     selector : 'app-root',
