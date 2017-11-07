@@ -10,9 +10,15 @@ import {Subscription} from "rxjs/Subscription";
 export class AppComponent implements OnDestroy, OnInit {
     private onPageVisibleSubscription: Subscription;
     private onPageNotVisibleSubscription: Subscription;
+    private onPageVisibilityChangeSubscription: Subscription;
     title = 'app';
 
     constructor( private pageVisibilityService: PageVisibilityService ) {
+
+    }
+
+
+    ngOnInit(): void {
         this.onPageVisibleSubscription = this.pageVisibilityService.$onPageVisible.subscribe( ()=> {
             console.log( 'visible' );
         } );
@@ -20,19 +26,21 @@ export class AppComponent implements OnDestroy, OnInit {
         this.onPageNotVisibleSubscription = this.pageVisibilityService.$onPageNotVisible.subscribe( ()=> {
             console.log( 'notVisible' );
         } );
-    }
 
-    ngOnInit(): void {
-        if ( this.pageVisibilityService.isPageVisible() ) {
-            console.log( 'visible' );
-        }
-        if ( this.pageVisibilityService.isPageNotVisible() ) {
-            console.log( 'notVisible' );
-        }
+        this.onPageVisibilityChangeSubscription = this.pageVisibilityService.$onPageVisibilityChange.subscribe( () => {
+            console.log( 'visibilityChange' );
+            if ( this.pageVisibilityService.isPageVisible() ) {
+                console.log( 'visible' );
+            }
+            if ( this.pageVisibilityService.isPageNotVisible() ) {
+                console.log( 'notVisible' );
+            }
+        } );
     }
 
     ngOnDestroy(): void {
         this.onPageVisibleSubscription.unsubscribe();
         this.onPageNotVisibleSubscription.unsubscribe();
+        this.onPageVisibilityChangeSubscription.unsubscribe();
     }
 }
