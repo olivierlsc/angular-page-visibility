@@ -1,6 +1,6 @@
 import { Component, OnDestroy, Inject, OnInit } from '@angular/core';
-import {PageVisibilityService} from "../../../src/angular-page-visibility";
-import {Subscription} from "rxjs/Subscription";
+import { PageVisibilityService } from "../../../src/angular-page-visibility";
+import { Subscription } from "rxjs/Subscription";
 
 @Component( {
     selector : 'app-root',
@@ -19,6 +19,13 @@ export class AppComponent implements OnDestroy, OnInit {
 
 
     ngOnInit(): void {
+        console.log( 'OnInit' );
+        if ( this.pageVisibilityService.isPageVisible() ) {
+            console.log( 'visible' );
+        }
+        if ( this.pageVisibilityService.isPageNotVisible() ) {
+            console.log( 'notVisible' );
+        }
         this.onPageVisibleSubscription = this.pageVisibilityService.$onPageVisible.subscribe( ()=> {
             console.log( 'visible' );
         } );
@@ -27,12 +34,11 @@ export class AppComponent implements OnDestroy, OnInit {
             console.log( 'notVisible' );
         } );
 
-        this.onPageVisibilityChangeSubscription = this.pageVisibilityService.$onPageVisibilityChange.subscribe( () => {
+        this.onPageVisibilityChangeSubscription = this.pageVisibilityService.$onPageVisibilityChange.subscribe( ( isPageVisible: boolean ) => {
             console.log( 'visibilityChange' );
-            if ( this.pageVisibilityService.isPageVisible() ) {
+            if ( isPageVisible ) {
                 console.log( 'visible' );
-            }
-            if ( this.pageVisibilityService.isPageNotVisible() ) {
+            } else {
                 console.log( 'notVisible' );
             }
         } );

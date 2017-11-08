@@ -9,12 +9,12 @@ export class PageVisibilityService {
     private static WEB_KIT_HIDDEN: string = "webkitHidden";
     private onPageVisibleSource: Subject<void> = new Subject<void>();
     private onPageNotVisibleSource: Subject<void> = new Subject<void>();
-    private onPageVisibilityChangeSource: Subject<void> = new Subject<void>();
+    private onPageVisibilityChangeSource: Subject<boolean> = new Subject<boolean>();
     private hidden: string;
     private visibilityChange: string;
     $onPageVisible: Observable<void> = this.onPageVisibleSource.asObservable();
     $onPageNotVisible: Observable<void> = this.onPageNotVisibleSource.asObservable();
-    $onPageVisibilityChange: Observable<void> = this.onPageVisibilityChangeSource.asObservable();
+    $onPageVisibilityChange: Observable<boolean> = this.onPageVisibilityChangeSource.asObservable();
 
     constructor() {
         this.init();
@@ -45,12 +45,13 @@ export class PageVisibilityService {
 
     private listenPageVisibility(): void {
         document.addEventListener( this.visibilityChange, () => {
-            this.onPageVisibilityChangeSource.next();
             if ( this.isPageVisible() ) {
+                this.onPageVisibilityChangeSource.next( true );
                 this.onPageVisibleSource.next();
-            } else {
-                this.onPageNotVisibleSource.next();
+                return;
             }
+            this.onPageVisibilityChangeSource.next( false );
+            this.onPageNotVisibleSource.next();
         }, false );
     }
 }
