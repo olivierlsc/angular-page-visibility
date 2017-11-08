@@ -1,6 +1,5 @@
 testing/
-src/**/*.js
-src/**/*.map
+src/
 .angular-cli.json
 .editorconfig
 .gitignore
