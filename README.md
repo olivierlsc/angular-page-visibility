@@ -34,8 +34,8 @@ Then, use it in your component :
 
 ```bash
 import { Component, OnDestroy, Inject, OnInit } from '@angular/core';
-import { PageVisibilityService } from 'angular-page-visibility';
-import { Subscription } from 'rxjs/Subscription';
+import { PageVisibilityService } from "angular-page-visibility";
+import { Subscription } from "rxjs/Subscription";
 
 @Component( {
     selector : 'app-root',
@@ -49,9 +49,18 @@ export class AppComponent implements OnDestroy, OnInit {
     title = 'app';
 
     constructor( private pageVisibilityService: PageVisibilityService ) {
+
     }
 
+
     ngOnInit(): void {
+        console.log( 'OnInit' );
+        if ( this.pageVisibilityService.isPageVisible() ) {
+            console.log( 'visible' );
+        }
+        if ( this.pageVisibilityService.isPageNotVisible() ) {
+            console.log( 'notVisible' );
+        }
         this.onPageVisibleSubscription = this.pageVisibilityService.$onPageVisible.subscribe( ()=> {
             console.log( 'visible' );
         } );
@@ -60,12 +69,11 @@ export class AppComponent implements OnDestroy, OnInit {
             console.log( 'notVisible' );
         } );
 
-        this.onPageVisibilityChangeSubscription = this.pageVisibilityService.$onPageVisibilityChange.subscribe( () => {
+        this.onPageVisibilityChangeSubscription = this.pageVisibilityService.$onPageVisibilityChange.subscribe( ( isPageVisible: boolean ) => {
             console.log( 'visibilityChange' );
-            if ( this.pageVisibilityService.isPageVisible() ) {
+            if ( isPageVisible ) {
                 console.log( 'visible' );
-            }
-            if ( this.pageVisibilityService.isPageNotVisible() ) {
+            } else {
                 console.log( 'notVisible' );
             }
         } );
