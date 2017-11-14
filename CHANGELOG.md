@@ -32,6 +32,7 @@ logWhenPageVisibilityChange( isPageVisible: boolean ): void {
 
 ### Deprecated
 * **$onPageNotVisible is deprecated, use $onPageHidden: Observable<void> in service/page.visibility.service:**
+  
 Example:
 
 Before:
@@ -49,6 +50,7 @@ this.onPageHiddenSubscription = this.pageVisibilityService.$onPageHidden.subscri
 } );
 ```
 * **isPageNotVisible is deprecated, use isPageHidden: void in service/page.visibility.service:**
+
 Example:
 
 Before:
