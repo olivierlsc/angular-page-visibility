@@ -1,15 +1,13 @@
 import {NgModule} from '@angular/core';
 import {PageVisibilityService} from "./page-visibility.service";
 
-@NgModule({
-    declarations : [
-    ],
-    providers: [
+@NgModule( {
+    declarations : [],
+    providers : [
         PageVisibilityService
     ],
-    exports : [
-    ]
-})
+    exports : []
+} )
 export class AngularPageVisibilityModule {
 
 }
