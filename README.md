@@ -34,7 +34,7 @@ Then, use it in your component :
 
 ```bash
 import { Component, OnDestroy, Inject, OnInit } from '@angular/core';
-import { PageVisibilityService } from "angular-page-visibility";
+import { PageVisibilityService, OnPageVisible, OnPageHidden, OnPageVisibilityChange } from "angular-page-visibility";
 import { Subscription } from "rxjs/Subscription";
 
 @Component( {
@@ -44,7 +44,7 @@ import { Subscription } from "rxjs/Subscription";
 } )
 export class AppComponent implements OnDestroy, OnInit {
     private onPageVisibleSubscription: Subscription;
-    private onPageNotVisibleSubscription: Subscription;
+    private onPageHiddenSubscription: Subscription;
     private onPageVisibilityChangeSubscription: Subscription;
     title = 'app';
 
@@ -52,21 +52,20 @@ export class AppComponent implements OnDestroy, OnInit {
 
     }
 
-
     ngOnInit(): void {
         console.log( 'OnInit' );
         if ( this.pageVisibilityService.isPageVisible() ) {
             console.log( 'visible' );
         }
-        if ( this.pageVisibilityService.isPageNotVisible() ) {
-            console.log( 'notVisible' );
+        if ( this.pageVisibilityService.isPageHidden() ) {
+            console.log( 'hidden' );
         }
         this.onPageVisibleSubscription = this.pageVisibilityService.$onPageVisible.subscribe( ()=> {
             console.log( 'visible' );
         } );
 
-        this.onPageNotVisibleSubscription = this.pageVisibilityService.$onPageNotVisible.subscribe( ()=> {
-            console.log( 'notVisible' );
+        this.onPageHiddenSubscription = this.pageVisibilityService.$onPageHidden.subscribe( ()=> {
+            console.log( 'hidden' );
         } );
 
         this.onPageVisibilityChangeSubscription = this.pageVisibilityService.$onPageVisibilityChange.subscribe( ( isPageVisible: boolean ) => {
@@ -74,14 +73,36 @@ export class AppComponent implements OnDestroy, OnInit {
             if ( isPageVisible ) {
                 console.log( 'visible' );
             } else {
-                console.log( 'notVisible' );
+                console.log( 'hidden' );
             }
         } );
     }
 
+    @OnPageVisible()
+    logWhenPageVisible(): void {
+        console.log( 'OnPageVisible' );
+        console.log( 'visible' );
+    }
+
+    @OnPageHidden()
+    logWhenPageNotVisible(): void {
+        console.log( 'OnPageHidden' );
+        console.log( 'hidden' );
+    }
+
+    @OnPageVisibilityChange()
+    logWhenPageVisibilityChange( isPageVisible: boolean ): void {
+        console.log( 'OnPageVisibilityChange' );
+        if ( isPageVisible ) {
+            console.log( 'visible' );
+        } else {
+            console.log( 'hidden' );
+        }
+    }
+
     ngOnDestroy(): void {
         this.onPageVisibleSubscription.unsubscribe();
-        this.onPageNotVisibleSubscription.unsubscribe();
+        this.onPageHiddenSubscription.unsubscribe();
         this.onPageVisibilityChangeSubscription.unsubscribe();
     }
 }
