@@ -31,7 +31,7 @@ logWhenPageVisibilityChange( isPageVisible: boolean ): void {
 ```
 
 ### Deprecated
-* **$onPageNotVisible is deprecated, use $onPageHidden: Observable<void> in service/page.visibility.service:**
+* **$onPageNotVisible is deprecated, use $onPageHidden: Observable<void> in PageVisibilityService:**
   
 Example:
 
@@ -49,7 +49,7 @@ this.onPageHiddenSubscription = this.pageVisibilityService.$onPageHidden.subscri
     console.log( 'hidden' );
 } );
 ```
-* **isPageNotVisible is deprecated, use isPageHidden: void in service/page.visibility.service:**
+* **isPageNotVisible is deprecated, use isPageHidden: void in PageVisibilityService:**
 
 Example:
 
@@ -72,7 +72,7 @@ if ( this.pageVisibilityService.isPageHidden() ) {
 # [4.0.8] (2017-11-08)
 
 ### Features
-* **service/page.visibility.service:** Evolve observable $onPageVisibilityChange :
+* **PageVisibilityService:** Evolve observable $onPageVisibilityChange :
 
 Example:
 
@@ -100,10 +100,10 @@ this.pageVisibilityService.$onPageVisibilityChange.subscribe( ( isPageVisible: b
 # [4.0.7] (2017-11-07)
 
 ### Features
-* **service/page.visibility.service:** Add 1 observable : $onPageVisibilityChange 
+* **PageVisibilityService:** Add 1 observable : $onPageVisibilityChange 
 
 <a name="4.0.6"></a>
 # [4.0.6] (2017-11-03)
 
 ### Features
-* **service/page.visibility.service:** Add 2 methods : isPageVisible, isPageNotVisible. Add 2 obervables : $onPageVisible, $onPageNotVisible 
+* **PageVisibilityService:** Add 2 methods : isPageVisible, isPageNotVisible. Add 2 obervables : $onPageVisible, $onPageNotVisible 
