@@ -56,7 +56,7 @@ export class AppComponent implements OnDestroy, OnInit {
     }
 
     @OnPageVisibilityChange()
-    logWhenPageVisibilityChange( isPageVisible ): void {
+    logWhenPageVisibilityChange( isPageVisible: boolean ): void {
         console.log( 'OnPageVisibilityChange' );
         if ( isPageVisible ) {
             console.log( 'visible' );
