@@ -14,7 +14,7 @@ export function OnPageVisibilityChange(): MethodDecorator {
     };
 }
 
-export function OnPageNotVisible(): MethodDecorator {
+export function OnPageHidden(): MethodDecorator {
     return function ( target: any, propertyKey: string, descriptor: PropertyDescriptor ) {
         pageVisibilityService.$onPageNotVisible.subscribe( ()=> {
             target[ propertyKey ].apply( this );

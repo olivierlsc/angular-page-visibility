@@ -8,12 +8,20 @@ export class PageVisibilityService {
     private static MS_HIDDEN: string = "msHidden";
     private static WEB_KIT_HIDDEN: string = "webkitHidden";
     private onPageVisibleSource: Subject<void> = new Subject<void>();
+    /**
+     * @deprecated from v4.0.9 use isPageHidden(): void
+     */
     private onPageNotVisibleSource: Subject<void> = new Subject<void>();
+    private onPageHiddenSource: Subject<void> = new Subject<void>();
     private onPageVisibilityChangeSource: Subject<boolean> = new Subject<boolean>();
     private hidden: string;
     private visibilityChange: string;
     $onPageVisible: Observable<void> = this.onPageVisibleSource.asObservable();
+    /**
+     * @deprecated from v4.0.9 use $onPageHidden: Observable<void>
+     */
     $onPageNotVisible: Observable<void> = this.onPageNotVisibleSource.asObservable();
+    $onPageHidden: Observable<void> = this.onPageHiddenSource.asObservable();
     $onPageVisibilityChange: Observable<boolean> = this.onPageVisibilityChangeSource.asObservable();
 
     constructor() {
@@ -22,11 +30,18 @@ export class PageVisibilityService {
     }
 
     isPageVisible(): boolean {
-        return ! this.isPageNotVisible();
+        return ! this.isPageHidden();
     };
 
-    isPageNotVisible(): boolean {
+    isPageHidden(): boolean {
         return document[ this.hidden ];
+    }
+
+    /**
+     * @deprecated from v4.0.9 use isPageHidden(): void
+     */
+    isPageNotVisible(): boolean {
+        return this.isPageHidden();
     }
 
     private init() {
@@ -51,6 +66,7 @@ export class PageVisibilityService {
                 return;
             }
             this.onPageVisibilityChangeSource.next( false );
+            this.onPageHiddenSource.next();
             this.onPageNotVisibleSource.next();
         }, false );
     }
