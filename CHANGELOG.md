@@ -1,3 +1,71 @@
+<a name="4.0.9"></a>
+# [4.0.9] (2017-11-14)
+
+### Features
+* **Add decorators to use in components :**
+
+Example:
+
+```
+@OnPageVisible()
+logWhenPageVisible(): void {
+    console.log( 'OnPageVisible' );
+    console.log( 'visible' );
+}
+
+@OnPageHidden()
+logWhenPageNotVisible(): void {
+    console.log( 'OnPageHidden' );
+    console.log( 'hidden' );
+}
+
+@OnPageVisibilityChange()
+logWhenPageVisibilityChange( isPageVisible: boolean ): void {
+    console.log( 'OnPageVisibilityChange' );
+    if ( isPageVisible ) {
+        console.log( 'visible' );
+    } else {
+        console.log( 'hidden' );
+    }
+}
+```
+
+### Deprecated
+* **$onPageNotVisible is deprecated, use $onPageHidden: Observable<void> in service/page.visibility.service:**
+Example:
+
+Before:
+```
+this.onPageNotVisibleSubscription = this.pageVisibilityService.$onPageNotVisible.subscribe( ()=> {
+    console.log( 'notVisible' );
+} );
+
+```
+
+After:
+```
+this.onPageHiddenSubscription = this.pageVisibilityService.$onPageHidden.subscribe( ()=> {
+    console.log( 'hidden' );
+} );
+```
+* **isPageNotVisible is deprecated, use isPageHidden: void in service/page.visibility.service:**
+Example:
+
+Before:
+```
+if ( this.pageVisibilityService.isPageNotVisible() ) {
+    console.log( 'notVisible' );
+}
+
+```
+
+After:
+```
+if ( this.pageVisibilityService.isPageHidden() ) {
+    console.log( 'hidden' );
+}
+```
+  
 <a name="4.0.8"></a>
 # [4.0.8] (2017-11-08)
 
