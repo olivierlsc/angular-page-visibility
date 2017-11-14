@@ -1,5 +1,5 @@
 import { Component, OnDestroy, Inject, OnInit } from '@angular/core';
-import { PageVisibilityService, OnPageVisible, OnPageNotVisible } from "../../../src/angular-page-visibility";
+import { PageVisibilityService, OnPageVisible, OnPageNotVisible, OnPageVisibilityChange } from "../../../src/angular-page-visibility";
 import { Subscription } from "rxjs/Subscription";
 
 @Component( {
@@ -15,18 +15,6 @@ export class AppComponent implements OnDestroy, OnInit {
 
     constructor( private pageVisibilityService: PageVisibilityService ) {
 
-    }
-
-    @OnPageVisible()
-    logWhenPageVisible(){
-        console.log('OnPageVisible');
-        console.log('visible');
-    }
-
-    @OnPageNotVisible()
-    logWhenPageNotVisible(){
-        console.log('OnPageNotVisible');
-        console.log('notVisible');
     }
 
     ngOnInit(): void {
@@ -53,6 +41,28 @@ export class AppComponent implements OnDestroy, OnInit {
                 console.log( 'notVisible' );
             }
         } );
+    }
+
+    @OnPageVisible()
+    logWhenPageVisible(): void {
+        console.log( 'OnPageVisible' );
+        console.log( 'visible' );
+    }
+
+    @OnPageNotVisible()
+    logWhenPageNotVisible(): void {
+        console.log( 'OnPageNotVisible' );
+        console.log( 'notVisible' );
+    }
+
+    @OnPageVisibilityChange()
+    logWhenPageVisibilityChange( isPageVisible ): void {
+        console.log( 'OnPageVisibilityChange' );
+        if ( isPageVisible ) {
+            console.log( 'visible' );
+        } else {
+            console.log( 'notVisible' );
+        }
     }
 
     ngOnDestroy(): void {
