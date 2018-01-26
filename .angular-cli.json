@@ -1,12 +1,12 @@
 {
-  "$schema": "node_modules/@angular/cli/lib/config/schema.json",
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "testing"
+    "name": "angular-page-visibility"
   },
   "apps": [
     {
-      "root": "testing/src",
-      "outDir": "testing/dist",
+      "root": "src",
+      "outDir": "dist",
       "assets": [
         "assets",
         "favicon.ico"

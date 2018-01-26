@@ -1,6 +1,6 @@
-import { AppPage } from './app.po';
+import { AppPage } from './app.po.ts';
 
-describe('testing App', () => {
+describe('angular-page-vibility App', () => {
   let page: AppPage;
 
   beforeEach(() => {

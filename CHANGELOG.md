@@ -1,3 +1,8 @@
+<a name="4.0.10"></a>
+# [4.0.10] (2017-11-14)
+
+Use ng-packagr for package this angular module.
+
 <a name="4.0.9"></a>
 # [4.0.9] (2017-11-14)
 

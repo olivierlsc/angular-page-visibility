@@ -1,9 +1,0 @@
-testing/
-src/
-.angular-cli.json
-.editorconfig
-.gitignore
-.npmignore
-tslint.json
-tsconfig.json
-.idea/
