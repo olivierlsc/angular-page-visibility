@@ -6,7 +6,7 @@ Example:
 
 ```ts
 import { Component, OnDestroy, Inject, OnInit } from '@angular/core';
-import { OnPageVisible, OnPageHidden, OnPageVisibilityChange } from "angular-page-visibility";
+import { OnPageVisible } from "angular-page-visibility";
 
 @Component( {
     selector : 'app-root',
