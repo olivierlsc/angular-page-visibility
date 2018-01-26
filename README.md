@@ -80,7 +80,7 @@ export class AppComponent implements OnDestroy, OnInit {
 
 ## Features and API
 
-- [@OnPageVisible](./wiki/on-page-visibile.decorator.md)
+- [@OnPageVisible](./wiki/on-page-visible.decorator.md)
 - [@OnPageHidden](./wiki/on-page-hidden.decorator.md)
 - [@OnPageVisibilityChange](./wiki/on-page-visibility-change.decorator.md)
 - [PageVisibilityService](./wiki/page-visibility.service.md)
