@@ -34,8 +34,7 @@ Then, use it in your component :
 
 ```bash
 import { Component, OnDestroy, Inject, OnInit } from '@angular/core';
-import { PageVisibilityService, OnPageVisible, OnPageHidden, OnPageVisibilityChange } from "angular-page-visibility";
-import { Subscription } from "rxjs/Subscription";
+import { OnPageVisible, OnPageHidden, OnPageVisibilityChange } from "angular-page-visibility";
 
 @Component( {
     selector : 'app-root',
@@ -43,39 +42,12 @@ import { Subscription } from "rxjs/Subscription";
     styleUrls : [ './app.component.scss' ]
 } )
 export class AppComponent implements OnDestroy, OnInit {
-    private onPageVisibleSubscription: Subscription;
-    private onPageHiddenSubscription: Subscription;
-    private onPageVisibilityChangeSubscription: Subscription;
     title = 'app';
 
-    constructor( private pageVisibilityService: PageVisibilityService ) {
-
+    constructor() {
     }
 
     ngOnInit(): void {
-        console.log( 'OnInit' );
-        if ( this.pageVisibilityService.isPageVisible() ) {
-            console.log( 'visible' );
-        }
-        if ( this.pageVisibilityService.isPageHidden() ) {
-            console.log( 'hidden' );
-        }
-        this.onPageVisibleSubscription = this.pageVisibilityService.$onPageVisible.subscribe( ()=> {
-            console.log( 'visible' );
-        } );
-
-        this.onPageHiddenSubscription = this.pageVisibilityService.$onPageHidden.subscribe( ()=> {
-            console.log( 'hidden' );
-        } );
-
-        this.onPageVisibilityChangeSubscription = this.pageVisibilityService.$onPageVisibilityChange.subscribe( ( isPageVisible: boolean ) => {
-            console.log( 'visibilityChange' );
-            if ( isPageVisible ) {
-                console.log( 'visible' );
-            } else {
-                console.log( 'hidden' );
-            }
-        } );
     }
 
     @OnPageVisible()
@@ -85,7 +57,7 @@ export class AppComponent implements OnDestroy, OnInit {
     }
 
     @OnPageHidden()
-    logWhenPageNotVisible(): void {
+    logWhenPageHidden(): void {
         console.log( 'OnPageHidden' );
         console.log( 'hidden' );
     }
@@ -101,13 +73,31 @@ export class AppComponent implements OnDestroy, OnInit {
     }
 
     ngOnDestroy(): void {
-        this.onPageVisibleSubscription.unsubscribe();
-        this.onPageHiddenSubscription.unsubscribe();
-        this.onPageVisibilityChangeSubscription.unsubscribe();
     }
 }
 
 ```
 
+## Features and API
+
+- [@OnPageVisible](./wiki/on-page-visibility.decorator.md)
+- [@OnPageHidden](./wiki/on-page-hidden.decorator.md)
+- [@OnPageVisibilityChange](./wiki/on-page-visibility-change.decorator.md)
+- [PageVisibilityService](./wiki/page-visibility.service.md)
+
 ## For any questions, suggestions, or feature requests
 [Please file an issue](https://github.com/olivierlsc/angular-page-visibility/issues)!
+
+## License
+
+License under the MIT License (MIT)
+
+Copyright © 2018 [Olivier LIN-SI-CHENG](http://www.olivierlinsicheng.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
