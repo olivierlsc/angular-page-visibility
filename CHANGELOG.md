@@ -1,5 +1,5 @@
 <a name="4.0.11"></a>
-# [4.0.10] (2017-11-14)
+# [4.0.11] (2018-01-26)
 
 Use ng-packagr for package this angular module.
 
