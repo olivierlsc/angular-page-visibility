@@ -11,7 +11,33 @@
     "package": "node node_modules/ng-packagr/cli/main.js -p ng-package.json",
     "e2e": "ng e2e"
   },
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olivierlsc/angular-page-visibility.git"
+  },
+  "author": "Olivier LIN-SI-CHENG",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/olivierlsc/angular-page-visibility/issues"
+  },
+  "homepage": "https://github.com/olivierlsc/angular-page-visibility#readme",
+  "keywords": [
+    "angular4",
+    "angular5",
+    "ng4",
+    "ng5",
+    "angular4 component",
+    "angular5 component",
+    "angular4 directive",
+    "angular5 directive",
+    "angular4 service",
+    "angular5 service",
+    "page visibility",
+    "page not visibility",
+    "page visibility api",
+    "page active",
+    "page not active"
+  ],
   "dependencies": {
     "@angular/animations": "^5.2.0",
     "@angular/common": "^5.2.0",
