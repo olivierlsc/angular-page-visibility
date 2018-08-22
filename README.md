@@ -80,7 +80,13 @@ export class AppComponent implements OnDestroy, OnInit {
 
 ## Angular support
 
-Supports Angular 4 to 5.
+Supports Angular 6.
+
+For Angular 4 to 5 use :
+
+```bash
+npm install --save angular-page-visibility@4.0.13
+```
 
 ## Features and API
 
