@@ -1,6 +1,6 @@
 {
   "name": "angular-page-visibility",
-  "version": "4.0.13",
+  "version": "6.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -23,14 +23,19 @@
   "keywords": [
     "angular4",
     "angular5",
+    "angular6",
     "ng4",
     "ng5",
+    "ng6",
     "angular4 component",
     "angular5 component",
+    "angular6 component",
     "angular4 directive",
     "angular5 directive",
+    "angular6 directive",
     "angular4 service",
     "angular5 service",
+    "angular6 service",
     "page visibility",
     "page not visibility",
     "page visibility api",

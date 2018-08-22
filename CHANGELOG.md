@@ -1,3 +1,10 @@
+<a name="6.0.0"></a>
+# [6.0.0] (2018-08-23)
+
+## Bug fixes
+
+* [**#5 Angular 6 Compatibility**](https://github.com/olivierlsc/angular-page-visibility/issues/5)
+
 <a name="4.0.13"></a>
 # [4.0.13] (2018-08-23)
 
