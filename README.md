@@ -78,6 +78,10 @@ export class AppComponent implements OnDestroy, OnInit {
 
 ```
 
+## Angular support
+
+Supports Angular 4 to 5.
+
 ## Features and API
 
 - [@OnPageVisible](./wiki/on-page-visible.decorator.md)

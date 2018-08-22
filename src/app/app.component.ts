@@ -12,6 +12,7 @@ export class AppComponent {
   private onPageHiddenSubscription : Subscription;
   private onPageVisibilityChangeSubscription : Subscription;
   title = 'app';
+  private isPageVisible : boolean;
 
   constructor ( private pageVisibilityService : PageVisibilityService ) {
 
@@ -47,12 +48,16 @@ export class AppComponent {
   logWhenPageVisible () : void {
     console.log( 'OnPageVisible' );
     console.log( 'visible' );
+    this.isPageVisible = true;
+    console.log(this.isPageVisible);
   }
 
   @OnPageHidden()
   logWhenPageHidden () : void {
     console.log( 'OnPageHidden' );
     console.log( 'hidden' );
+    this.isPageVisible = false;
+    console.log(this.isPageVisible);
   }
 
   @OnPageVisibilityChange()

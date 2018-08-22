@@ -1,6 +1,6 @@
 {
   "name": "angular-page-visibility",
-  "version": "4.0.11",
+  "version": "4.0.13",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -16,7 +16,6 @@
     "url": "git+https://github.com/olivierlsc/angular-page-visibility.git"
   },
   "author": "Olivier LIN-SI-CHENG",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/olivierlsc/angular-page-visibility/issues"
   },

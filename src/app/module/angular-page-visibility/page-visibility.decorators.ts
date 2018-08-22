@@ -8,24 +8,27 @@ const pageVisibilityService = injector.get( PageVisibilityService );
 
 export function OnPageVisibilityChange () : MethodDecorator {
   return function ( target : any , propertyKey : string , descriptor : PropertyDescriptor ) {
+    const fn = descriptor.value;
     pageVisibilityService.$onPageVisibilityChange.subscribe( ( isPageVisible : boolean )=> {
-      target[ propertyKey ].apply( this , [ isPageVisible ] );
+      fn.call(target, [ isPageVisible ]);
     } );
   };
 }
 
 export function OnPageHidden () : MethodDecorator {
   return function ( target : any , propertyKey : string , descriptor : PropertyDescriptor ) {
+    const fn = descriptor.value;
     pageVisibilityService.$onPageHidden.subscribe( ()=> {
-      target[ propertyKey ].apply( this );
+      fn.call(target);
     } );
   };
 }
 
 export function OnPageVisible () : MethodDecorator {
   return function ( target : any , propertyKey : string , descriptor : PropertyDescriptor ) {
+    const fn = descriptor.value;
     pageVisibilityService.$onPageVisible.subscribe( ()=> {
-      target[ propertyKey ].apply( this );
+      fn.call(target);
     } );
   };
 }

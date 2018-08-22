@@ -1,3 +1,10 @@
+<a name="4.0.13"></a>
+# [4.0.13] (2018-08-23)
+
+## Bug fixes
+
+* [**#4 @OnPageVisible() doesnt work with class instances**](https://github.com/olivierlsc/angular-page-visibility/issues/4)
+
 <a name="4.0.11"></a>
 # [4.0.11] (2018-01-26)
 
