@@ -1,3 +1,10 @@
+<a name="6.0.1"></a>
+# [6.0.1] (2018-08-23)
+
+## Bug fixes
+
+* [**#6 Build error with aot support**](https://github.com/olivierlsc/angular-page-visibility/issues/6)
+
 <a name="6.0.0"></a>
 # [6.0.0] (2018-08-23)
 
