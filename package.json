@@ -1,6 +1,6 @@
 {
   "name": "angular-page-visibility",
-  "version": "6.0.1",
+  "version": "6.0.2",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -42,7 +42,20 @@
     "page active",
     "page not active"
   ],
+  "dependencies": {
+    "rxjs-compat": "^6.2.2"
+  },
   "peerDependencies": {
+    "@angular/common": "^6.1.4",
+    "@angular/compiler": "^6.1.4",
+    "@angular/core": "^6.1.4",
+    "@angular/platform-browser": "^6.1.4",
+    "@angular/platform-browser-dynamic": "^6.1.4",
+    "core-js": "^2.4.1",
+    "rxjs": "^6.2.2",
+    "zone.js": "^0.8.26"
+  },
+  "devDependencies": {
     "@angular/animations": "^6.1.4",
     "@angular/common": "^6.1.4",
     "@angular/compiler": "^6.1.4",
@@ -55,9 +68,6 @@
     "core-js": "^2.4.1",
     "rxjs": "^6.2.2",
     "zone.js": "^0.8.26",
-    "rxjs-compat": "^6.0.0-rc.0"
-  },
-  "devDependencies": {
     "@angular-devkit/build-angular": "~0.7.0",
     "@angular/cli": "^6.1.4",
     "@angular/compiler-cli": "^6.1.4",
