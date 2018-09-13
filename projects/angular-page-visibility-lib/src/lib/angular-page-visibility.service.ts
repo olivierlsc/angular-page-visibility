@@ -9,40 +9,40 @@ export class AngularPageVisibilityService {
   private static HIDDEN = 'hidden';
   private static MS_HIDDEN = 'msHidden';
   private static WEB_KIT_HIDDEN = 'webkitHidden';
-  private onPageVisibleSource : Subject<void> = new Subject<void> ();
+  private onPageVisibleSource: Subject<void> = new Subject<void> ();
   /**
    * @deprecated from v4.0.9 use isPageHidden(): void
    */
-  private onPageNotVisibleSource : Subject<void> = new Subject<void> ();
-  private onPageHiddenSource : Subject<void> = new Subject<void> ();
-  private onPageVisibilityChangeSource : Subject<boolean> = new Subject<boolean> ();
-  private hidden : string;
-  private visibilityChange : string;
-  $onPageVisible : Observable<void> = this.onPageVisibleSource.asObservable();
+  private onPageNotVisibleSource: Subject<void> = new Subject<void> ();
+  private onPageHiddenSource: Subject<void> = new Subject<void> ();
+  private onPageVisibilityChangeSource: Subject<boolean> = new Subject<boolean> ();
+  private hidden: string;
+  private visibilityChange: string;
+  $onPageVisible: Observable<void> = this.onPageVisibleSource.asObservable();
   /**
    * @deprecated from v4.0.9 use $onPageHidden: Observable<void>
    */
-  $onPageNotVisible : Observable<void> = this.onPageNotVisibleSource.asObservable();
-  $onPageHidden : Observable<void> = this.onPageHiddenSource.asObservable();
-  $onPageVisibilityChange : Observable<boolean> = this.onPageVisibilityChangeSource.asObservable();
+  $onPageNotVisible: Observable<void> = this.onPageNotVisibleSource.asObservable();
+  $onPageHidden: Observable<void> = this.onPageHiddenSource.asObservable();
+  $onPageVisibilityChange: Observable<boolean> = this.onPageVisibilityChangeSource.asObservable();
 
   constructor () {
     this.init();
     this.listenPageVisibility();
   }
 
-  isPageVisible () : boolean {
+  isPageVisible (): boolean {
     return ! this.isPageHidden();
   };
 
-  isPageHidden () : boolean {
+  isPageHidden (): boolean {
     return document[ this.hidden ];
   }
 
   /**
    * @deprecated from v4.0.9 use isPageHidden(): void
    */
-  isPageNotVisible () : boolean {
+  isPageNotVisible (): boolean {
     return this.isPageHidden();
   }
 
@@ -60,7 +60,7 @@ export class AngularPageVisibilityService {
     }
   }
 
-  private listenPageVisibility () : void {
+  private listenPageVisibility (): void {
     document.addEventListener( this.visibilityChange , () => {
       if ( this.isPageVisible() ) {
         this.onPageVisibilityChangeSource.next( true );

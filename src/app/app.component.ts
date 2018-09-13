@@ -9,10 +9,10 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'angular-page-visibility-app';
-  private onPageVisibleSubscription : Subscription;
-  private onPageHiddenSubscription : Subscription;
-  private onPageVisibilityChangeSubscription : Subscription;
-  private isPageVisible : boolean;
+  private onPageVisibleSubscription: Subscription;
+  private onPageHiddenSubscription: Subscription;
+  private onPageVisibilityChangeSubscription: Subscription;
+  private isPageVisible: boolean;
 
   constructor(private angularPageVisibilityService: AngularPageVisibilityService) {}
 
@@ -23,15 +23,16 @@ export class AppComponent implements OnInit, OnDestroy {
     if ( this.angularPageVisibilityService.isPageHidden() ) {
       console.log( 'OnInit => hidden' );
     }
-    this.onPageVisibleSubscription = this.angularPageVisibilityService.$onPageVisible.subscribe( ()=> {
+    this.onPageVisibleSubscription = this.angularPageVisibilityService.$onPageVisible.subscribe( () => {
       console.log( 'OnInit => visible' );
     } );
 
-    this.onPageHiddenSubscription = this.angularPageVisibilityService.$onPageHidden.subscribe( ()=> {
+    this.onPageHiddenSubscription = this.angularPageVisibilityService.$onPageHidden.subscribe( () => {
       console.log( 'OnInit => hidden' );
     } );
 
-    this.onPageVisibilityChangeSubscription = this.angularPageVisibilityService.$onPageVisibilityChange.subscribe( ( isPageVisible : boolean ) => {
+    this.onPageVisibilityChangeSubscription = this.angularPageVisibilityService
+    .$onPageVisibilityChange.subscribe( ( isPageVisible: boolean ) => {
       console.log( 'OnInit => visibilityChange' );
       if ( isPageVisible ) {
         console.log( 'OnInit => visible' );
@@ -42,21 +43,21 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   @OnPageVisible()
-  logWhenPageVisible () : void {
+  logWhenPageVisible (): void {
     console.log( 'OnPageVisible => visible' );
     this.isPageVisible = true;
     console.log(this.isPageVisible);
   }
 
   @OnPageHidden()
-  logWhenPageHidden () : void {
+  logWhenPageHidden (): void {
     console.log( 'OnPageHidden => hidden' );
     this.isPageVisible = false;
     console.log(this.isPageVisible);
   }
 
   @OnPageVisibilityChange()
-  logWhenPageVisibilityChange ( isPageVisible : boolean ) : void {
+  logWhenPageVisibilityChange ( isPageVisible: boolean ): void {
     if ( isPageVisible ) {
       console.log( 'OnPageVisibilityChange => visible' );
     } else {
