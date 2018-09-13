@@ -1,12 +1,14 @@
-import {Injectable} from '@angular/core';
-import {Subject} from "rxjs/Subject";
-import {Observable} from "rxjs/Observable";
+import { Injectable } from '@angular/core';
+import {Subject} from 'rxjs/Subject';
+import {Observable} from 'rxjs/Observable';
 
-@Injectable()
-export class PageVisibilityService {
-  private static HIDDEN : string = "hidden";
-  private static MS_HIDDEN : string = "msHidden";
-  private static WEB_KIT_HIDDEN : string = "webkitHidden";
+@Injectable({
+  providedIn: 'root'
+})
+export class AngularPageVisibilityService {
+  private static HIDDEN = 'hidden';
+  private static MS_HIDDEN = 'msHidden';
+  private static WEB_KIT_HIDDEN = 'webkitHidden';
   private onPageVisibleSource : Subject<void> = new Subject<void> ();
   /**
    * @deprecated from v4.0.9 use isPageHidden(): void
@@ -45,16 +47,16 @@ export class PageVisibilityService {
   }
 
   private init () {
-    if ( typeof document[ PageVisibilityService.HIDDEN ] !== "undefined" ) { // Opera 12.10 and Firefox 18 and later support
-      this.hidden = PageVisibilityService.HIDDEN;
-      this.visibilityChange = "visibilitychange";
+    if ( typeof document[ AngularPageVisibilityService.HIDDEN ] !== 'undefined' ) { // Opera 12.10 and Firefox 18 and later support
+      this.hidden = AngularPageVisibilityService.HIDDEN;
+      this.visibilityChange = 'visibilitychange';
     }
-    else if ( typeof document[ PageVisibilityService.MS_HIDDEN ] !== "undefined" ) {
-      this.hidden = PageVisibilityService.MS_HIDDEN;
-      this.visibilityChange = "msvisibilitychange";
-    } else if ( typeof document[ PageVisibilityService.WEB_KIT_HIDDEN ] !== "undefined" ) {
-      this.hidden = PageVisibilityService.WEB_KIT_HIDDEN;
-      this.visibilityChange = "webkitvisibilitychange";
+    else if ( typeof document[ AngularPageVisibilityService.MS_HIDDEN ] !== 'undefined' ) {
+      this.hidden = AngularPageVisibilityService.MS_HIDDEN;
+      this.visibilityChange = 'msvisibilitychange';
+    } else if ( typeof document[ AngularPageVisibilityService.WEB_KIT_HIDDEN ] !== 'undefined' ) {
+      this.hidden = AngularPageVisibilityService.WEB_KIT_HIDDEN;
+      this.visibilityChange = 'webkitvisibilitychange';
     }
   }
 

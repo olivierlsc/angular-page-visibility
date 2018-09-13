@@ -1,10 +1,10 @@
-import {PageVisibilityService} from './page-visibility.service';
 import {AngularPageVisibilityModule} from './angular-page-visibility.module';
 import { ReflectiveInjector, Provider } from '@angular/core';
+import { AngularPageVisibilityService } from './angular-page-visibility.service';
 
-const providers : Provider[] = [ PageVisibilityService ];
+const providers : Provider[] = [ AngularPageVisibilityService ];
 const injector = ReflectiveInjector.resolveAndCreate( providers );
-const pageVisibilityService = injector.get( PageVisibilityService );
+const pageVisibilityService = injector.get( AngularPageVisibilityService );
 
 export function OnPageVisibilityChange () : MethodDecorator {
   return function ( target : any , propertyKey : string , descriptor : PropertyDescriptor ) {
