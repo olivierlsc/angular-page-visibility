@@ -17,21 +17,13 @@ import { Subscription } from "rxjs/Subscription";
   styleUrls : [ './app.component.scss' ]
 } )
 export class AppComponent {
-  title = 'app';
-
-  constructor ( private pageVisibilityService : PageVisibilityService ) {
-
-  }
-
+  ...
   ngOnInit () : void {
-    console.log( 'OnInit' );
     if ( this.pageVisibilityService.isPageVisible() ) {
-      console.log( 'visible' );
+      console.log( 'OnInit => visible' );
     }
   }
-
-  ngOnDestroy () : void {
-  }
+  ...
 }
 ```
 
@@ -52,27 +44,19 @@ import { Subscription } from "rxjs/Subscription";
   styleUrls : [ './app.component.scss' ]
 } )
 export class AppComponent {
-  title = 'app';
-
-  constructor ( private pageVisibilityService : PageVisibilityService ) {
-
-  }
-
+  ...
   ngOnInit () : void {
-    console.log( 'OnInit' );
     if ( this.pageVisibilityService.isPageHidden() ) {
-      console.log( 'hidden' );
+      console.log( 'OnInit => hidden' );
     }
   }
-
-  ngOnDestroy () : void {
-  }
+  ...
 }
 ```
 
-## .$onPageVisible : Observable<void>
+## .isPagePrerender(): boolean
 
-Return Observable<void> to run if page visible.
+Return true if page status is prerender.
 
 Example:
 
@@ -87,61 +71,179 @@ import { Subscription } from "rxjs/Subscription";
   styleUrls : [ './app.component.scss' ]
 } )
 export class AppComponent {
-  private onPageVisibleSubscription : Subscription;
-  title = 'app';
-
-  constructor ( private pageVisibilityService : PageVisibilityService ) {
-
+  ...
+  constructor () {
+    if ( this.pageVisibilityService.isPagePrerender() ) {
+      console.log( 'constructor => prerender' );
+    }
   }
+  ...
+}
+```
 
-  ngOnInit () : void {
-    console.log( 'OnInit' );
-    this.onPageVisibleSubscription = this.pageVisibilityService.$onPageVisible.subscribe( ()=> {
-      console.log( 'visible' );
+## .isPageUnloaded(): boolean
+
+Return true if page status is unloaded.
+
+Example:
+
+```ts
+import { Component } from '@angular/core';
+import { PageVisibilityService } from "./module/angular-page-visibility/public_api";
+import { Subscription } from "rxjs/Subscription";
+
+@Component( {
+  selector : 'app-root' ,
+  templateUrl : './app.component.html' ,
+  styleUrls : [ './app.component.scss' ]
+} )
+export class AppComponent {
+  ...
+  constructor () {
+    if ( this.pageVisibilityService.isPageUnloaded() ) {
+      console.log( 'constructor => unloaded' );
+    }
+  }
+  ...
+}
+
+## .$onPageVisible : Observable<void>
+
+Return Observable<void> to run if page is visible.
+
+Example:
+
+```ts
+
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AngularPageVisibilityService } from 'angular-page-visibility';
+import { Subscription } from 'rxjs';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.less']
+})
+export class AppComponent implements OnInit, OnDestroy {
+  private onPageVisibleSubscription: Subscription;
+
+  constructor(private angularPageVisibilityService: AngularPageVisibilityService) {}
+
+  ngOnInit(): void {
+    this.onPageVisibleSubscription = this.angularPageVisibilityService.$onPageVisible.subscribe( () => {
+      console.log( 'OnInit => visible' );
     } );
   }
 
-  ngOnDestroy () : void {
+  ngOnDestroy(): void {
     this.onPageVisibleSubscription.unsubscribe();
   }
 }
+
 ```
 
 ## .$onPageHidden : Observable<void>
 
-Return Observable<void> to run if page hidden.
+Return Observable<void> to run if page is hidden.
 
 Example:
 
 ```ts
-import { Component } from '@angular/core';
-import { PageVisibilityService } from "./module/angular-page-visibility/public_api";
-import { Subscription } from "rxjs/Subscription";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AngularPageVisibilityService } from 'angular-page-visibility';
+import { Subscription } from 'rxjs';
 
-@Component( {
-  selector : 'app-root' ,
-  templateUrl : './app.component.html' ,
-  styleUrls : [ './app.component.scss' ]
-} )
-export class AppComponent {
-  private onPageHiddenSubscription : Subscription;
-  title = 'app';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.less']
+})
+export class AppComponent implements OnInit, OnDestroy {
+  private onPageHiddenSubscription: Subscription;
 
-  constructor ( private pageVisibilityService : PageVisibilityService ) {
+  constructor(private angularPageVisibilityService: AngularPageVisibilityService) {}
 
-  }
-
-  ngOnInit () : void {
-    console.log( 'OnInit' );
-    this.onPageHiddenSubscription = this.pageVisibilityService.$onPageHidden.subscribe( ()=> {
-      console.log( 'hidden' );
+  ngOnInit(): void {
+    this.onPageHiddenSubscription = this.angularPageVisibilityService.$onPageHidden.subscribe( () => {
+      console.log( 'OnInit => hidden' );
     } );
   }
 
-  ngOnDestroy () : void {
+  ngOnDestroy(): void {
     this.onPageHiddenSubscription.unsubscribe();
   }
 }
+
+```
+
+## .$onPagePrerender : Observable<void>
+
+Return Observable<void> to run if page status is prerender.
+
+Example:
+
+```ts
+
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AngularPageVisibilityService } from 'angular-page-visibility';
+import { Subscription } from 'rxjs';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.less']
+})
+export class AppComponent implements OnInit, OnDestroy {
+  private onPagePrerenderSubscription: Subscription;
+
+  constructor(private angularPageVisibilityService: AngularPageVisibilityService) {}
+
+  ngOnInit(): void {
+    this.onPagePrerenderSubscription = this.angularPageVisibilityService.$onPagePrerender.subscribe( () => {
+      console.log( 'OnInit => prerender' );
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.onPagePrerenderSubscription.unsubscribe();
+  }
+}
+
+```
+
+## .$onPageUnloaded : Observable<void>
+
+Return Observable<void> to run if page status is unloaded.
+
+Example:
+
+```ts
+
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AngularPageVisibilityService } from 'angular-page-visibility';
+import { Subscription } from 'rxjs';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.less']
+})
+export class AppComponent implements OnInit, OnDestroy {
+  private onPageUnloadedSubscription: Subscription;
+
+  constructor(private angularPageVisibilityService: AngularPageVisibilityService) {}
+
+  ngOnInit(): void {
+    this.onPageUnloadedSubscription = this.angularPageVisibilityService.$onPageUnloaded.subscribe(() => {
+      console.log( 'OnInit => unloaded' );
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.onPageUnloadedSubscription.unsubscribe();
+  }
+}
+
 ```
 
 ## .$onPageVisibilityChange  : Observable<void>
@@ -151,37 +253,39 @@ Return Observable<void> to run if page visibility change.
 Example:
 
 ```ts
-import { Component } from '@angular/core';
-import { PageVisibilityService } from "./module/angular-page-visibility/public_api";
-import { Subscription } from "rxjs/Subscription";
 
-@Component( {
-  selector : 'app-root' ,
-  templateUrl : './app.component.html' ,
-  styleUrls : [ './app.component.scss' ]
-} )
-export class AppComponent {
-  private onPageVisibilityChangeSubscription : Subscription;
-  title = 'app';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AngularPageVisibilityService, AngularPageVisibilityStateEnum } from 'angular-page-visibility';
+import { Subscription } from 'rxjs';
 
-  constructor ( private pageVisibilityService : PageVisibilityService ) {
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.less']
+})
+export class AppComponent implements OnInit, OnDestroy {
+  private onPageVisibilityChangeSubscription: Subscription;
 
-  }
+  constructor(private angularPageVisibilityService: AngularPageVisibilityService) {}
 
-  ngOnInit () : void {
-    console.log( 'OnInit' );
-    this.onPageVisibilityChangeSubscription = this.pageVisibilityService.$onPageVisibilityChange.subscribe( ( isPageVisible : boolean ) => {
-      console.log( 'visibilityChange' );
-      if ( isPageVisible ) {
-        console.log( 'visible' );
-      } else {
-        console.log( 'hidden' );
+  ngOnInit(): void {
+    this.onPageVisibilityChangeSubscription = this.angularPageVisibilityService
+    .$onPageVisibilityChange.subscribe( ( visibilityState: AngularPageVisibilityStateEnum ) => {
+      if ( visibilityState === AngularPageVisibilityStateEnum.VISIBLE ) {
+        console.log( 'OnInit => visibilityChange => visible' );
+      } else if (visibilityState === AngularPageVisibilityStateEnum.HIDDEN) {
+        console.log( 'OnInit => visibilityChange => hidden' );
+      } else if (visibilityState === AngularPageVisibilityStateEnum.PRERENDER) {
+        console.log( 'OnInit => visibilityChange => prerender' );
+      } else if (visibilityState === AngularPageVisibilityStateEnum.UNLOADED) {
+        console.log( 'OnInit => visibilityChange => unloaded' );
       }
     } );
   }
 
-  ngOnDestroy () : void {
+  ngOnDestroy(): void {
     this.onPageVisibilityChangeSubscription.unsubscribe();
   }
 }
+ 
 ```

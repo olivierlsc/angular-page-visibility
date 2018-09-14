@@ -86,13 +86,17 @@ export class AppComponent implements OnInit, OnDestroy {
 
   @OnPageVisibilityChange()
   logWhenPageVisibilityChange ( visibilityState: AngularPageVisibilityStateEnum ): void {
-    if ( visibilityState === AngularPageVisibilityStateEnum.VISIBLE ) {
+    if ( AngularPageVisibilityStateEnum[visibilityState]
+      === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.VISIBLE]) {
       console.log( 'OnPageVisibilityChange => visible' );
-    } else if (visibilityState === AngularPageVisibilityStateEnum.HIDDEN) {
+    } else if (AngularPageVisibilityStateEnum[visibilityState]
+      === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.HIDDEN]) {
       console.log( 'OnPageVisibilityChange => hidden' );
-    } else if (visibilityState === AngularPageVisibilityStateEnum.PRERENDER) {
+    } else if (AngularPageVisibilityStateEnum[visibilityState]
+      === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.PRERENDER]) {
       console.log( 'OnPageVisibilityChange => prerender' );
-    } else if (visibilityState === AngularPageVisibilityStateEnum.UNLOADED) {
+    } else if (AngularPageVisibilityStateEnum[visibilityState]
+      === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.UNLOADED]) {
       console.log( 'OnPageVisibilityChange => unloaded' );
     }
   }

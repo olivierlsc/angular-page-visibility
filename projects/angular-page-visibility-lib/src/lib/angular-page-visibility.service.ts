@@ -1,20 +1,25 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { AngularPageVisibilityStateEnum } from './angular-page-visibility.state.enum';
-import { DOCUMENT } from '@angular/common';
+
+class HiddenKeyConstant {
+  static DEFAULT = 'hidden';
+  static MS = 'msHidden';
+  static WEB_KIT = 'webkitHidden';
+}
+
+class VisibilityStatusConstant {
+  static VISIBLE = 'visible';
+  static HIDDEN = 'hidden';
+  static PRERENDER = 'prerender';
+  static UNLOADED = 'unloaded';
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AngularPageVisibilityService {
-  private static HIDDEN = 'hidden';
-  private static MS_HIDDEN = 'msHidden';
-  private static WEB_KIT_HIDDEN = 'webkitHidden';
-  private static STATUS_VISIBLE = 'visible';
-  private static STATUS_HIDDEN = 'hidden';
-  private static STATUS_PRERENDER = 'prerender';
-  private static STATUS_UNLOADED = 'unloaded';
   private onPageVisibleSource: Subject<void> = new Subject<void> ();
   private onPageHiddenSource: Subject<void> = new Subject<void> ();
   private onPagePrerenderSource: Subject<void> = new Subject<void> ();
@@ -23,52 +28,52 @@ export class AngularPageVisibilityService {
   private hidden: string;
   private visibilityChange: string;
   private visibilityState: string;
+  private document: Document;
   $onPageVisible: Observable<void> = this.onPageVisibleSource.asObservable();
   $onPageHidden: Observable<void> = this.onPageHiddenSource.asObservable();
   $onPagePrerender: Observable<void> = this.onPagePrerenderSource.asObservable();
   $onPageUnloaded: Observable<void> = this.onPageUnloadedSource.asObservable();
   $onPageVisibilityChange: Observable<AngularPageVisibilityStateEnum> = this.onPageVisibilityChangeSource.asObservable();
 
-  constructor (@Inject(DOCUMENT) private document: Document|any) {
+  constructor () {
     this.addEventListenerVibilityChange();
   }
 
   isPageVisible (): boolean {
-    return AngularPageVisibilityService.STATUS_VISIBLE === this.getVisibilityState() || ! this.isHidden();
+    return VisibilityStatusConstant.VISIBLE === this.getVisibilityState() || ! this.isHidden();
   }
 
   isPageHidden (): boolean {
-    return AngularPageVisibilityService.STATUS_HIDDEN === this.getVisibilityState() || this.isHidden();
+    return VisibilityStatusConstant.HIDDEN === this.getVisibilityState() || this.isHidden();
   }
 
   isPagePrerender(): boolean {
-    return AngularPageVisibilityService.STATUS_PRERENDER === this.getVisibilityState();
+    return VisibilityStatusConstant.PRERENDER === this.getVisibilityState();
   }
 
   isPageUnloaded(): boolean {
-    return AngularPageVisibilityService.STATUS_UNLOADED === this.getVisibilityState();
+    return VisibilityStatusConstant.UNLOADED === this.getVisibilityState();
   }
 
   private isHidden(): boolean {
-    console.log('service ' + this.document[ this.hidden ]);
-    return this.document[ this.hidden ];
+    return document[ this.hidden ];
   }
 
   private getVisibilityState(): string {
-    return this.document[this.visibilityState];
+    return document[this.visibilityState];
   }
 
   private defineBrowserSupport () {
-    if ( typeof this.document[ AngularPageVisibilityService.HIDDEN ] !== 'undefined' ) { // Opera 12.10 and Firefox 18 and later support
-      this.hidden = 'hidden';
+    if ( typeof document[HiddenKeyConstant.DEFAULT] !== 'undefined' ) { // Opera 12.10 and Firefox 18 and later support
+      this.hidden = HiddenKeyConstant.DEFAULT;
       this.visibilityChange = 'visibilitychange';
       this.visibilityState = 'visibilityState';
-    } else if ( typeof this.document[ AngularPageVisibilityService.MS_HIDDEN ] !== 'undefined' ) {
-      this.hidden = 'msHidden';
+    } else if ( typeof document[HiddenKeyConstant.MS] !== 'undefined' ) {
+      this.hidden = HiddenKeyConstant.MS;
       this.visibilityChange = 'msvisibilitychange';
       this.visibilityState = 'msVisibilityState';
-    } else if ( typeof this.document[ AngularPageVisibilityService.WEB_KIT_HIDDEN ] !== 'undefined' ) {
-      this.hidden = 'webkitHidden';
+    } else if ( typeof document[HiddenKeyConstant.WEB_KIT] !== 'undefined' ) {
+      this.hidden = HiddenKeyConstant.WEB_KIT;
       this.visibilityChange = 'webkitvisibilitychange';
       this.visibilityState = 'webkitVisibilityState';
     }
@@ -79,19 +84,19 @@ export class AngularPageVisibilityService {
     document.addEventListener( this.visibilityChange , () => {
       const vibilityState = this.getVisibilityState();
       switch (vibilityState) {
-          case AngularPageVisibilityService.STATUS_VISIBLE:
+          case VisibilityStatusConstant.VISIBLE:
             this.onPageVisibilityChangeSource.next( AngularPageVisibilityStateEnum.VISIBLE );
             this.onPageVisibleSource.next();
             break;
-          case AngularPageVisibilityService.STATUS_HIDDEN:
+          case VisibilityStatusConstant.HIDDEN:
             this.onPageVisibilityChangeSource.next( AngularPageVisibilityStateEnum.HIDDEN );
             this.onPageHiddenSource.next();
             break;
-          case AngularPageVisibilityService.STATUS_PRERENDER:
+          case VisibilityStatusConstant.PRERENDER:
             this.onPageVisibilityChangeSource.next( AngularPageVisibilityStateEnum.PRERENDER );
             this.onPagePrerenderSource.next();
             break;
-          case AngularPageVisibilityService.STATUS_UNLOADED:
+          case VisibilityStatusConstant.UNLOADED:
             this.onPageVisibilityChangeSource.next( AngularPageVisibilityStateEnum.UNLOADED );
             this.onPageUnloadedSource.next();
             break;

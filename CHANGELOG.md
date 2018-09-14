@@ -1,3 +1,16 @@
+<a name="6.1.0"></a>
+# [6.1.0] (2018-09-14)
+
+## Features
+
+* [**New decorator @OnPagePrerender**](./wiki/on-page-prerender.decorator.md)
+* [**New decorator @OnPageUnloaded**](./wiki/on-page-unloaded.decorator.md)
+* [**New service angularPageVisibilityService.isPagePrerender**](./wiki/page-visibility.service.md)
+* [**New service angularPageVisibilityService.isPageUnloaded**](./wiki/page-visibility.service.md)
+* [**Get visibility status in service angularPageVisibilityService.$onPageVisibilityChange**](./wiki/page-visibility.service.md)
+* [**Get visibility status with @OnPageVisibilityChange**](./wiki/on-page-visibility-change.decorator.md)
+* [**Expose AngularPageVisibilityStateEnum contains all visibility status**](./wiki/angular-page-vsibility-state.enum.md)
+
 <a name="6.0.2"></a>
 # [6.0.2] (2018-08-23)
 

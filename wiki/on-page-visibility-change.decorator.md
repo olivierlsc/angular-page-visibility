@@ -6,7 +6,7 @@ Example:
 
 ```ts
 import { Component, OnDestroy, Inject, OnInit } from '@angular/core';
-import { OnPageVisibilityChange } from "angular-page-visibility";
+import { OnPageVisibilityChange, AngularPageVisibilityStateEnum } from "angular-page-visibility";
 
 @Component( {
     selector : 'app-root',
@@ -14,25 +14,23 @@ import { OnPageVisibilityChange } from "angular-page-visibility";
     styleUrls : [ './app.component.scss' ]
 } )
 export class AppComponent implements OnDestroy, OnInit {
-    title = 'app';
-
-    constructor() {
+  ...
+  @OnPageVisibilityChange()
+  logWhenPageVisibilityChange ( visibilityState: AngularPageVisibilityStateEnum ): void {
+    if ( AngularPageVisibilityStateEnum[visibilityState]
+      === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.VISIBLE]) {
+      console.log( 'OnPageVisibilityChange => visible' );
+    } else if (AngularPageVisibilityStateEnum[visibilityState]
+      === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.HIDDEN]) {
+      console.log( 'OnPageVisibilityChange => hidden' );
+    } else if (AngularPageVisibilityStateEnum[visibilityState]
+      === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.PRERENDER]) {
+      console.log( 'OnPageVisibilityChange => prerender' );
+    } else if (AngularPageVisibilityStateEnum[visibilityState]
+      === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.UNLOADED]) {
+      console.log( 'OnPageVisibilityChange => unloaded' );
     }
-
-    ngOnInit(): void {
-    }
-
-    @OnPageVisibilityChange()
-    logWhenPageVisibilityChange ( isPageVisible : boolean ) : void {
-      console.log( 'OnPageVisibilityChange' );
-      if ( isPageVisible ) {
-        console.log( 'visible' );
-      } else {
-        console.log( 'hidden' );
-      }
-    }
-
-    ngOnDestroy(): void {
-    }
+  }
+  ...
 }
 ```
