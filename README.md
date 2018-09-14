@@ -98,8 +98,10 @@ Supports Angular 6.
 For Angular 4 to 5 use :
 
 ```bash
-npm install --save [angular-page-visibility@4.0.13](https://github.com/olivierlsc/angular-page-visibility/tree/v4.0.13)
+npm install --save angular-page-visibility@4.0.13
 ```
+
+[Documentation for angular-page-visibility@4.0.13](https://github.com/olivierlsc/angular-page-visibility/tree/v4.0.13)
 
 ## Features and API
 
