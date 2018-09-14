@@ -1,6 +1,6 @@
 {
   "name": "angular-page-visibility-app",
-  "version": "6.1.0",
+  "version": "6.1.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -8,7 +8,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "pre-publish": "ng build --prod angular-page-visibility-lib",
+    "pre-publish": "ng build --prod angular-page-visibility-lib && cp *.md dist/angular-page-visibility",
     "publish": "npm publish dist/angular-page-visibility",
     "e2e": "ng e2e"
   },
