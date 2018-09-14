@@ -1,19 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import {AngularPageVisibilityModule} from "./module/angular-page-visibility/angular-page-visibility.module";
+import { AngularPageVisibilityModule } from 'angular-page-visibility';
 
-
-@NgModule( {
-  declarations : [
+@NgModule({
+  declarations: [
     AppComponent
-  ] ,
-  imports : [
-    BrowserModule ,
+  ],
+  imports: [
+    BrowserModule,
     AngularPageVisibilityModule
-  ] ,
-  providers : [] ,
-  bootstrap : [ AppComponent ]
-} )
-export class AppModule {
-}
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

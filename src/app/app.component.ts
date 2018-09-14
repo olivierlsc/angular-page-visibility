@@ -1,78 +1,111 @@
-import { Component } from '@angular/core';
-import { PageVisibilityService, OnPageVisible, OnPageHidden, OnPageVisibilityChange } from "./module/angular-page-visibility/public_api";
-import { Subscription } from "rxjs/Subscription";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  AngularPageVisibilityService,
+  OnPageVisible, OnPageHidden,
+  OnPageVisibilityChange,
+  AngularPageVisibilityStateEnum,
+  OnPagePrerender, OnPageUnloaded} from 'angular-page-visibility';
+import { Subscription } from 'rxjs';
 
-@Component( {
-  selector : 'app-root' ,
-  templateUrl : './app.component.html' ,
-  styleUrls : [ './app.component.scss' ]
-} )
-export class AppComponent {
-  private onPageVisibleSubscription : Subscription;
-  private onPageHiddenSubscription : Subscription;
-  private onPageVisibilityChangeSubscription : Subscription;
-  title = 'app';
-  private isPageVisible : boolean;
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.less']
+})
+export class AppComponent implements OnInit, OnDestroy {
+  title = 'angular-page-visibility-app';
+  private onPageVisibleSubscription: Subscription;
+  private onPageHiddenSubscription: Subscription;
+  private onPagePrerenderSubscription: Subscription;
+  private onPageUnloadedSubscription: Subscription;
+  private onPageVisibilityChangeSubscription: Subscription;
+  private isPageVisible: boolean;
 
-  constructor ( private pageVisibilityService : PageVisibilityService ) {
+  constructor(private angularPageVisibilityService: AngularPageVisibilityService) {}
 
-  }
-
-  ngOnInit () : void {
-    console.log( 'OnInit' );
-    if ( this.pageVisibilityService.isPageVisible() ) {
-      console.log( 'visible' );
+  ngOnInit(): void {
+    if ( this.angularPageVisibilityService.isPageVisible() ) {
+      console.log( 'OnInit => visible' );
     }
-    if ( this.pageVisibilityService.isPageHidden() ) {
-      console.log( 'hidden' );
+    if ( this.angularPageVisibilityService.isPageHidden() ) {
+      console.log( 'OnInit => hidden' );
     }
-    this.onPageVisibleSubscription = this.pageVisibilityService.$onPageVisible.subscribe( ()=> {
-      console.log( 'visible' );
+    this.onPageVisibleSubscription = this.angularPageVisibilityService.$onPageVisible.subscribe( () => {
+      console.log( 'OnInit => visible' );
     } );
 
-    this.onPageHiddenSubscription = this.pageVisibilityService.$onPageHidden.subscribe( ()=> {
-      console.log( 'hidden' );
+    this.onPageHiddenSubscription = this.angularPageVisibilityService.$onPageHidden.subscribe( () => {
+      console.log( 'OnInit => hidden' );
     } );
 
-    this.onPageVisibilityChangeSubscription = this.pageVisibilityService.$onPageVisibilityChange.subscribe( ( isPageVisible : boolean ) => {
-      console.log( 'visibilityChange' );
-      if ( isPageVisible ) {
-        console.log( 'visible' );
-      } else {
-        console.log( 'hidden' );
+    this.onPagePrerenderSubscription = this.angularPageVisibilityService.$onPagePrerender.subscribe( () => {
+      console.log( 'OnInit => prerender' );
+    });
+
+    this.onPageUnloadedSubscription = this.angularPageVisibilityService.$onPageUnloaded.subscribe(() => {
+      console.log( 'OnInit => unloaded' );
+    });
+
+    this.onPageVisibilityChangeSubscription = this.angularPageVisibilityService
+    .$onPageVisibilityChange.subscribe( ( visibilityState: AngularPageVisibilityStateEnum ) => {
+      if ( visibilityState === AngularPageVisibilityStateEnum.VISIBLE ) {
+        console.log( 'OnInit => visibilityChange => visible' );
+      } else if (visibilityState === AngularPageVisibilityStateEnum.HIDDEN) {
+        console.log( 'OnInit => visibilityChange => hidden' );
+      } else if (visibilityState === AngularPageVisibilityStateEnum.PRERENDER) {
+        console.log( 'OnInit => visibilityChange => prerender' );
+      } else if (visibilityState === AngularPageVisibilityStateEnum.UNLOADED) {
+        console.log( 'OnInit => visibilityChange => unloaded' );
       }
     } );
   }
 
   @OnPageVisible()
-  logWhenPageVisible () : void {
-    console.log( 'OnPageVisible' );
-    console.log( 'visible' );
+  logWhenPageVisible (): void {
+    console.log( 'OnPageVisible => visible' );
     this.isPageVisible = true;
     console.log(this.isPageVisible);
   }
 
   @OnPageHidden()
-  logWhenPageHidden () : void {
-    console.log( 'OnPageHidden' );
-    console.log( 'hidden' );
+  logWhenPageHidden (): void {
+    console.log( 'OnPageHidden => hidden' );
     this.isPageVisible = false;
     console.log(this.isPageVisible);
   }
 
+  @OnPagePrerender()
+  logWhenPagePrerender (): void {
+    console.log( 'OnPagePrerender => prerender' );
+  }
+
+  @OnPageUnloaded()
+  logWhenPageUnloaded (): void {
+    console.log( 'OnPageUnloaded => unloaded' );
+  }
+
   @OnPageVisibilityChange()
-  logWhenPageVisibilityChange ( isPageVisible : boolean ) : void {
-    console.log( 'OnPageVisibilityChange' );
-    if ( isPageVisible ) {
-      console.log( 'visible' );
-    } else {
-      console.log( 'hidden' );
+  logWhenPageVisibilityChange ( visibilityState: AngularPageVisibilityStateEnum ): void {
+    if ( AngularPageVisibilityStateEnum[visibilityState]
+      === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.VISIBLE]) {
+      console.log( 'OnPageVisibilityChange => visible' );
+    } else if (AngularPageVisibilityStateEnum[visibilityState]
+      === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.HIDDEN]) {
+      console.log( 'OnPageVisibilityChange => hidden' );
+    } else if (AngularPageVisibilityStateEnum[visibilityState]
+      === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.PRERENDER]) {
+      console.log( 'OnPageVisibilityChange => prerender' );
+    } else if (AngularPageVisibilityStateEnum[visibilityState]
+      === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.UNLOADED]) {
+      console.log( 'OnPageVisibilityChange => unloaded' );
     }
   }
 
-  ngOnDestroy () : void {
+  ngOnDestroy(): void {
     this.onPageVisibleSubscription.unsubscribe();
     this.onPageHiddenSubscription.unsubscribe();
+    this.onPagePrerenderSubscription.unsubscribe();
+    this.onPageUnloadedSubscription.unsubscribe();
     this.onPageVisibilityChangeSubscription.unsubscribe();
   }
 }

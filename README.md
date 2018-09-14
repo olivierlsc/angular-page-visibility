@@ -4,78 +4,91 @@
 First, install it.
 
 ```bash
-npm install angular-page-visibility --save
+npm install --save angular-page-visibility@latest
 ```
 
 Then, import it into your `@NgModule`:
 
-```bash
+```ts
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AngularPageVisibilityModule } from 'angular-page-visibility';
 import { AppComponent } from './app.component';
+import { AngularPageVisibilityModule } from 'angular-page-visibility';
 
-@NgModule( {
-    declarations : [
-        AppComponent
-    ],
-    imports : [
-        BrowserModule,
-        AngularPageVisibilityModule
-    ],
-    providers : [],
-    bootstrap : [ AppComponent ]
-} )
-export class AppModule {
-}
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AngularPageVisibilityModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 ```
 
-Then, use it in your component :
+Finally, decorate your component:
 
-```bash
-import { Component, OnDestroy, Inject, OnInit } from '@angular/core';
-import { OnPageVisible, OnPageHidden, OnPageVisibilityChange } from "angular-page-visibility";
+```ts
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  OnPageVisible, OnPageHidden,
+  OnPageVisibilityChange,
+  AngularPageVisibilityStateEnum,
+  OnPagePrerender, OnPageUnloaded} from 'angular-page-visibility';
+import { Subscription } from 'rxjs';
 
-@Component( {
-    selector : 'app-root',
-    templateUrl : './app.component.html',
-    styleUrls : [ './app.component.scss' ]
-} )
-export class AppComponent implements OnDestroy, OnInit {
-    title = 'app';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.less']
+})
+export class AppComponent implements OnInit, OnDestroy {
+  ...
+  @OnPageVisible()
+  logWhenPageVisible (): void {
+    console.log( 'OnPageVisible => visible' );
+    this.isPageVisible = true;
+    console.log(this.isPageVisible);
+  }
 
-    constructor() {
+  @OnPageHidden()
+  logWhenPageHidden (): void {
+    console.log( 'OnPageHidden => hidden' );
+    this.isPageVisible = false;
+    console.log(this.isPageVisible);
+  }
+
+  @OnPagePrerender()
+  logWhenPagePrerender (): void {
+    console.log( 'OnPagePrerender => prerender' );
+  }
+
+  @OnPageUnloaded()
+  logWhenPageUnloaded (): void {
+    console.log( 'OnPageUnloaded => unloaded' );
+  }
+
+  @OnPageVisibilityChange()
+  logWhenPageVisibilityChange ( visibilityState: AngularPageVisibilityStateEnum ): void {
+    if ( AngularPageVisibilityStateEnum[visibilityState]
+      === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.VISIBLE]) {
+      console.log( 'OnPageVisibilityChange => visible' );
+    } else if (AngularPageVisibilityStateEnum[visibilityState]
+      === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.HIDDEN]) {
+      console.log( 'OnPageVisibilityChange => hidden' );
+    } else if (AngularPageVisibilityStateEnum[visibilityState]
+      === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.PRERENDER]) {
+      console.log( 'OnPageVisibilityChange => prerender' );
+    } else if (AngularPageVisibilityStateEnum[visibilityState]
+      === AngularPageVisibilityStateEnum[AngularPageVisibilityStateEnum.UNLOADED]) {
+      console.log( 'OnPageVisibilityChange => unloaded' );
     }
-
-    ngOnInit(): void {
-    }
-
-    @OnPageVisible()
-    logWhenPageVisible(): void {
-        console.log( 'OnPageVisible' );
-        console.log( 'visible' );
-    }
-
-    @OnPageHidden()
-    logWhenPageHidden(): void {
-        console.log( 'OnPageHidden' );
-        console.log( 'hidden' );
-    }
-
-    @OnPageVisibilityChange()
-    logWhenPageVisibilityChange( isPageVisible: boolean ): void {
-        console.log( 'OnPageVisibilityChange' );
-        if ( isPageVisible ) {
-            console.log( 'visible' );
-        } else {
-            console.log( 'hidden' );
-        }
-    }
-
-    ngOnDestroy(): void {
-    }
+  }
+  ...
 }
-
 ```
 
 ## Angular support
@@ -92,6 +105,8 @@ npm install --save angular-page-visibility@4.0.13
 
 - [@OnPageVisible](./wiki/on-page-visible.decorator.md)
 - [@OnPageHidden](./wiki/on-page-hidden.decorator.md)
+- [@OnPagePrerender](./wiki/on-page-prerender.decorator.md)
+- [@OnPageUnloaded](./wiki/on-page-unloaded.decorator.md)
 - [@OnPageVisibilityChange](./wiki/on-page-visibility-change.decorator.md)
 - [PageVisibilityService](./wiki/page-visibility.service.md)
 

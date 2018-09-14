@@ -1,0 +1,40 @@
+{
+  "name": "angular-page-visibility",
+  "version": "6.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olivierlsc/angular-page-visibility.git"
+  },
+  "author": "Olivier LIN-SI-CHENG",
+  "bugs": {
+    "url": "https://github.com/olivierlsc/angular-page-visibility/issues"
+  },
+  "homepage": "https://github.com/olivierlsc/angular-page-visibility#readme",
+  "keywords": [
+    "angular4",
+    "angular5",
+    "angular6",
+    "ng4",
+    "ng5",
+    "ng6",
+    "angular4 component",
+    "angular5 component",
+    "angular6 component",
+    "angular4 directive",
+    "angular5 directive",
+    "angular6 directive",
+    "angular4 service",
+    "angular5 service",
+    "angular6 service",
+    "page visibility",
+    "page not visibility",
+    "page visibility api",
+    "page active",
+    "page not active"
+  ],
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
+    "rxjs-compat": "^6.3.2"
+  }
+}
