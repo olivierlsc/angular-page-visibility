@@ -1,4 +1,4 @@
-# PageVisibilityService
+# AngularPageVisibilityService
 
 ## .isPageVisible(): boolean
 
