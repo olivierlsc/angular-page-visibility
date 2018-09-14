@@ -18,7 +18,7 @@ import { Subscription } from "rxjs/Subscription";
 } )
 export class AppComponent {
   ...
-  ngOnInit () : void {
+  constructor () {
     if ( this.angularPageVisibilityService.isPageVisible() ) {
       console.log( 'OnInit => visible' );
     }
@@ -45,7 +45,7 @@ import { Subscription } from "rxjs/Subscription";
 } )
 export class AppComponent {
   ...
-  ngOnInit () : void {
+  constructor () {
     if ( this.angularPageVisibilityService.isPageHidden() ) {
       console.log( 'OnInit => hidden' );
     }
