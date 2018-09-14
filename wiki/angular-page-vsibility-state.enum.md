@@ -2,10 +2,10 @@
 
 Enum contains all visibility status.
 
-## AngularPageVisibilityStateEnum.VISIBLE
+## VISIBLE
 
-## AngularPageVisibilityStateEnum.HIDDEN
+## HIDDEN
 
-## AngularPageVisibilityStateEnum.PRERENDER
+## PRERENDER
 
-## AngularPageVisibilityStateEnum.UNLOADED
+## UNLOADED
