@@ -8,7 +8,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "package": "node node_modules/ng-packagr/cli/main.js -p ng-package.json",
+    "pre-publish": "ng build --prod angular-page-visibility-lib",
+    "publish": "npm publish dist/angular-page-visibility",
     "e2e": "ng e2e"
   },
   "repository": {
