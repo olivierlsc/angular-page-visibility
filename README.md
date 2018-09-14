@@ -108,7 +108,7 @@ npm install --save angular-page-visibility@4.0.13
 - [@OnPagePrerender](./wiki/on-page-prerender.decorator.md)
 - [@OnPageUnloaded](./wiki/on-page-unloaded.decorator.md)
 - [@OnPageVisibilityChange](./wiki/on-page-visibility-change.decorator.md)
-- [PageVisibilityService](./wiki/page-visibility.service.md)
+- [AngularPageVisibilityService](./wiki/page-visibility.service.md)
 
 ## For any questions, suggestions, or feature requests
 [Please file an issue](https://github.com/olivierlsc/angular-page-visibility/issues)!
