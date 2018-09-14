@@ -1,6 +1,6 @@
 # @OnPageUnloaded()
 
-Decorate the method in the controller to run when the page is status prerender.
+Decorate the method in the controller to run when the page is status unloaded.
 
 Example:
 
