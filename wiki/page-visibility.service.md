@@ -8,7 +8,7 @@ Example:
 
 ```ts
 import { Component } from '@angular/core';
-import { PageVisibilityService } from "./module/angular-page-visibility/public_api";
+import { AngularPageVisibilityService } from 'angular-page-visibility';
 import { Subscription } from "rxjs/Subscription";
 
 @Component( {
@@ -19,7 +19,7 @@ import { Subscription } from "rxjs/Subscription";
 export class AppComponent {
   ...
   ngOnInit () : void {
-    if ( this.pageVisibilityService.isPageVisible() ) {
+    if ( this.angularPageVisibilityService.isPageVisible() ) {
       console.log( 'OnInit => visible' );
     }
   }
@@ -35,7 +35,7 @@ Example:
 
 ```ts
 import { Component } from '@angular/core';
-import { PageVisibilityService } from "./module/angular-page-visibility/public_api";
+import { AngularPageVisibilityService } from 'angular-page-visibility';
 import { Subscription } from "rxjs/Subscription";
 
 @Component( {
@@ -46,7 +46,7 @@ import { Subscription } from "rxjs/Subscription";
 export class AppComponent {
   ...
   ngOnInit () : void {
-    if ( this.pageVisibilityService.isPageHidden() ) {
+    if ( this.angularPageVisibilityService.isPageHidden() ) {
       console.log( 'OnInit => hidden' );
     }
   }
@@ -62,7 +62,7 @@ Example:
 
 ```ts
 import { Component } from '@angular/core';
-import { PageVisibilityService } from "./module/angular-page-visibility/public_api";
+import { AngularPageVisibilityService } from 'angular-page-visibility';
 import { Subscription } from "rxjs/Subscription";
 
 @Component( {
@@ -73,7 +73,7 @@ import { Subscription } from "rxjs/Subscription";
 export class AppComponent {
   ...
   constructor () {
-    if ( this.pageVisibilityService.isPagePrerender() ) {
+    if ( this.angularPageVisibilityService.isPagePrerender() ) {
       console.log( 'constructor => prerender' );
     }
   }
@@ -89,7 +89,7 @@ Example:
 
 ```ts
 import { Component } from '@angular/core';
-import { PageVisibilityService } from "./module/angular-page-visibility/public_api";
+import { AngularPageVisibilityService } from 'angular-page-visibility';
 import { Subscription } from "rxjs/Subscription";
 
 @Component( {
@@ -100,7 +100,7 @@ import { Subscription } from "rxjs/Subscription";
 export class AppComponent {
   ...
   constructor () {
-    if ( this.pageVisibilityService.isPageUnloaded() ) {
+    if ( this.angularPageVisibilityService.isPageUnloaded() ) {
       console.log( 'constructor => unloaded' );
     }
   }
