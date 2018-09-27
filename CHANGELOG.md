@@ -1,3 +1,10 @@
+<a name="6.1.3"></a>
+# [6.1.3] (2018-09-27)
+
+## Bug fixes
+
+* Fix undefined in decorators
+
 <a name="6.1.2"></a>
 # [6.1.2] (2018-09-27)
 
