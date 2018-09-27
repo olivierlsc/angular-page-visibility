@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less']
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit, OnDestroy{
   title = 'angular-page-visibility-app';
   private onPageVisibleSubscription: Subscription;
   private onPageHiddenSubscription: Subscription;

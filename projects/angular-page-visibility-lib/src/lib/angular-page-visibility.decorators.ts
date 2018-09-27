@@ -15,12 +15,16 @@ export function OnPageVisibilityChange (): MethodDecorator {
     target.ngOnInit = function(...args) {
       onPageHiddenSubscription = pageVisibilityService.$onPageVisibilityChange
       .subscribe( ( visibilityState: AngularPageVisibilityStateEnum ) => originalMethod.call(this, [ visibilityState ]));
-      originalNgOnInit.call(this, args);
+      if (originalNgOnInit) {
+        originalNgOnInit.call(this, args);
+      }
     };
     const originalNgOnDestroy = target.ngOnDestroy;
     target.ngOnDestroy = function(...args) {
       onPageHiddenSubscription.unsubscribe();
-      originalNgOnDestroy.call(this, args);
+      if (originalNgOnDestroy) {
+        originalNgOnDestroy.call(this, args);
+      }
     };
   };
 }
@@ -32,12 +36,16 @@ export function OnPageHidden (): MethodDecorator {
     let onPageHiddenSubscription: Subscription;
     target.ngOnInit = function(...args) {
       onPageHiddenSubscription = pageVisibilityService.$onPageHidden.subscribe(() => originalMethod.call(this));
-      originalNgOnInit.call(this, args);
+      if (originalNgOnInit) {
+        originalNgOnInit.call(this, args);
+      }
     };
     const originalNgOnDestroy = target.ngOnDestroy;
     target.ngOnDestroy = function(...args) {
       onPageHiddenSubscription.unsubscribe();
-      originalNgOnDestroy.call(this, args);
+      if (originalNgOnDestroy) {
+        originalNgOnDestroy.call(this, args);
+      }
     };
   };
 }
@@ -49,12 +57,16 @@ export function OnPageVisible (): MethodDecorator {
     let onPageVisibleSubscription: Subscription;
     target.ngOnInit = function(...args) {
       onPageVisibleSubscription = pageVisibilityService.$onPageVisible.subscribe(() => originalMethod.call(this));
-      originalNgOnInit.call(this, args);
+      if (originalNgOnInit) {
+        originalNgOnInit.call(this, args);
+      }
     };
     const originalNgOnDestroy = target.ngOnDestroy;
     target.ngOnDestroy = function(...args) {
       onPageVisibleSubscription.unsubscribe();
-      originalNgOnDestroy.call(this, args);
+      if (originalNgOnDestroy) {
+        originalNgOnDestroy.call(this, args);
+      }
     };
   };
 }
@@ -66,12 +78,16 @@ export function OnPagePrerender (): MethodDecorator {
     let onPagePrerenderSubscription: Subscription;
     target.ngOnInit = function(...args) {
       onPagePrerenderSubscription = pageVisibilityService.$onPagePrerender.subscribe(() => originalMethod.call(this));
-      originalNgOnInit.call(this, args);
+      if (originalNgOnInit) {
+        originalNgOnInit.call(this, args);
+      }
     };
     const originalNgOnDestroy = target.ngOnDestroy;
     target.ngOnDestroy = function(...args) {
       onPagePrerenderSubscription.unsubscribe();
-      originalNgOnDestroy.call(this, args);
+      if (originalNgOnDestroy) {
+        originalNgOnDestroy.call(this, args);
+      }
     };
   };
 }
@@ -83,12 +99,16 @@ export function OnPageUnloaded (): MethodDecorator {
     let onPageUnloadedSubscription: Subscription;
     target.ngOnInit = function(...args) {
       onPageUnloadedSubscription = pageVisibilityService.$onPageUnloaded.subscribe(() => originalMethod.call(this));
-      originalNgOnInit.call(this, args);
+      if (originalNgOnInit) {
+        originalNgOnInit.call(this, args);
+      }
     };
     const originalNgOnDestroy = target.ngOnDestroy;
     target.ngOnDestroy = function(...args) {
       onPageUnloadedSubscription.unsubscribe();
-      originalNgOnDestroy.call(this, args);
+      if (originalNgOnDestroy) {
+        originalNgOnDestroy.call(this, args);
+      }
     };
   };
 }
