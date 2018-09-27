@@ -65,6 +65,7 @@ export class AppComponent implements OnInit, OnDestroy {
     console.log( 'OnPageVisible => visible' );
     this.isPageVisible = true;
     console.log(this.isPageVisible);
+    console.log(this.angularPageVisibilityService.isPageVisible());
   }
 
   @OnPageHidden()
@@ -72,6 +73,7 @@ export class AppComponent implements OnInit, OnDestroy {
     console.log( 'OnPageHidden => hidden' );
     this.isPageVisible = false;
     console.log(this.isPageVisible);
+    console.log(this.angularPageVisibilityService.isPageHidden());
   }
 
   @OnPagePrerender()

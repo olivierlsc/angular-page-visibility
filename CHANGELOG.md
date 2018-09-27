@@ -1,3 +1,10 @@
+<a name="6.1.2"></a>
+# [6.1.2] (2018-09-27)
+
+## Bug fixes
+
+* [**#7 Decorators doesnt work with Injectables**](https://github.com/olivierlsc/angular-page-visibility/issues/7)
+
 <a name="6.1.1"></a>
 # [6.1.1] (2018-09-14)
 
