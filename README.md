@@ -50,15 +50,11 @@ export class AppComponent implements OnInit, OnDestroy {
   @OnPageVisible()
   logWhenPageVisible (): void {
     console.log( 'OnPageVisible => visible' );
-    this.isPageVisible = true;
-    console.log(this.isPageVisible);
   }
 
   @OnPageHidden()
   logWhenPageHidden (): void {
     console.log( 'OnPageHidden => hidden' );
-    this.isPageVisible = false;
-    console.log(this.isPageVisible);
   }
 
   @OnPagePrerender()
