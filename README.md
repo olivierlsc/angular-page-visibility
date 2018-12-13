@@ -4,7 +4,7 @@
 First, install it.
 
 ```bash
-npm install --save angular-page-visibility@latest
+npm install --save angular-page-visibility@latest rxjs-compat
 ```
 
 Then, import it into your `@NgModule`:
