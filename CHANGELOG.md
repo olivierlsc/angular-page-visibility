@@ -1,3 +1,14 @@
+<a name="6.1.4"></a>
+# [6.1.4] (2019-04-10)
+
+## Features
+
+* **Migrate to angular 7**
+
+## Bug fixes
+
+* [**#10 Angular 7 support**](https://github.com/olivierlsc/angular-page-visibility/issues/10)
+
 <a name="6.1.3"></a>
 # [6.1.3] (2018-09-27)
 
