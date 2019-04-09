@@ -4,7 +4,7 @@
 First, install it.
 
 ```bash
-npm install --save angular-page-visibility@latest rxjs-compat
+npm install --save angular-page-visibility@latest
 ```
 
 Then, import it into your `@NgModule`:
@@ -89,7 +89,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 ## Angular support
 
-Supports Angular 6.
+Supports Angular > 6.
 
 For Angular 4 to 5 use :
 
@@ -115,7 +115,7 @@ npm install --save angular-page-visibility@4.0.13
 
 License under the MIT License (MIT)
 
-Copyright © 2017-2018 [Olivier LIN-SI-CHENG](http://www.olivierlinsicheng.com)
+Copyright © 2017-2019 [Olivier LIN-SI-CHENG](https://www.olivierlinsicheng.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
