@@ -1,103 +1,99 @@
 {
-  "name": "angular-page-visibility-app",
-  "version": "6.1.4",
-  "license": "MIT",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "pre-publish": "ng build --prod angular-page-visibility-lib && cp *.md dist/angular-page-visibility",
-    "publish": "npm publish dist/angular-page-visibility",
-    "e2e": "ng e2e"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/olivierlsc/angular-page-visibility.git"
-  },
-  "author": "Olivier LIN-SI-CHENG",
-  "bugs": {
-    "url": "https://github.com/olivierlsc/angular-page-visibility/issues"
-  },
-  "homepage": "https://github.com/olivierlsc/angular-page-visibility#readme",
-  "keywords": [
-    "angular4",
-    "angular5",
-    "angular6",
-    "angular7",
-    "ng4",
-    "ng5",
-    "ng6",
-    "ng7",
-    "angular4 component",
-    "angular5 component",
-    "angular6 component",
-    "angular7 component",
-    "angular4 directive",
-    "angular5 directive",
-    "angular6 directive",
-    "angular7 directive",
-    "angular4 service",
-    "angular5 service",
-    "angular6 service",
-    "angular7 service",
-    "page visibility",
-    "page not visibility",
-    "page visibility api",
-    "page active",
-    "page not active"
-  ],
-  "private": true,
-  "dependencies": {
-    "@angular/animations": "^7.2.12",
-    "@angular/common": "^7.2.12",
-    "@angular/compiler": "^7.2.12",
-    "@angular/core": "^7.2.12",
-    "@angular/forms": "^7.2.12",
-    "@angular/http": "^7.2.12",
-    "@angular/platform-browser": "^7.2.12",
-    "@angular/platform-browser-dynamic": "^7.2.12",
-    "@angular/router": "^7.2.12",
-    "core-js": "2.6.5",
-    "rxjs": "^6.4.0",
-    "zone.js": "^0.9.0"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "~0.13.8",
-    "@angular-devkit/build-ng-packagr": "^0.13.8",
-    "@angular/cli": "^7.3.8",
-    "@angular/compiler-cli": "^7.2.12",
-    "@angular/language-service": "^7.2.12",
-    "@types/jasmine": "~3.3.12",
-    "@types/jasminewd2": "~2.0.6",
-    "@types/node": "~11.13.2",
-    "codelyzer": "~5.0.0",
-    "jasmine-core": "~3.4.0",
-    "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~4.0.1",
-    "karma-chrome-launcher": "~2.2.0",
-    "karma-coverage-istanbul-reporter": "~2.0.5",
-    "karma-jasmine": "~2.0.1",
-    "karma-jasmine-html-reporter": "^1.4.0",
-    "ng-packagr": "^5.0.1",
-    "prettier": "1.16.4",
-    "protractor": "~5.4.2",
-    "ts-node": "~8.0.3",
-    "tsickle": "^0.34.3",
-    "tslib": "^1.9.0",
-    "tslint": "~5.15.0",
-    "typescript": "^3.2.4"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
+    "name": "angular-page-visibility-app",
+    "version": "6.1.4",
+    "license": "MIT",
+    "scripts": {
+        "ng": "ng",
+        "start": "ng serve",
+        "build": "ng build",
+        "test": "ng test",
+        "lint": "ng lint",
+        "pre-publish": "ng build --prod angular-page-visibility-lib && cp *.md dist/angular-page-visibility",
+        "publish": "npm publish dist/angular-page-visibility",
+        "e2e": "ng e2e"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/olivierlsc/angular-page-visibility.git"
+    },
+    "author": "Olivier LIN-SI-CHENG",
+    "bugs": {
+        "url": "https://github.com/olivierlsc/angular-page-visibility/issues"
+    },
+    "homepage": "https://github.com/olivierlsc/angular-page-visibility#readme",
+    "keywords": [
+        "angular4",
+        "angular5",
+        "angular6",
+        "angular7",
+        "ng4",
+        "ng5",
+        "ng6",
+        "ng7",
+        "angular4 component",
+        "angular5 component",
+        "angular6 component",
+        "angular7 component",
+        "angular4 directive",
+        "angular5 directive",
+        "angular6 directive",
+        "angular7 directive",
+        "angular4 service",
+        "angular5 service",
+        "angular6 service",
+        "angular7 service",
+        "page visibility",
+        "page not visibility",
+        "page visibility api",
+        "page active",
+        "page not active"
+    ],
+    "private": true,
+    "dependencies": {
+        "@angular/animations": "^7.2.12",
+        "@angular/common": "^7.2.12",
+        "@angular/compiler": "^7.2.12",
+        "@angular/core": "^7.2.12",
+        "@angular/forms": "^7.2.12",
+        "@angular/http": "^7.2.12",
+        "@angular/platform-browser": "^7.2.12",
+        "@angular/platform-browser-dynamic": "^7.2.12",
+        "@angular/router": "^7.2.12",
+        "core-js": "2.6.5",
+        "rxjs": "^6.4.0",
+        "zone.js": "^0.9.0"
+    },
+    "devDependencies": {
+        "@angular-devkit/build-angular": "~0.13.8",
+        "@angular-devkit/build-ng-packagr": "^0.13.8",
+        "@angular/cli": "^7.3.8",
+        "@angular/compiler-cli": "^7.2.12",
+        "@angular/language-service": "^7.2.12",
+        "@types/jasmine": "~3.3.12",
+        "@types/jasminewd2": "~2.0.6",
+        "@types/node": "~11.13.2",
+        "codelyzer": "~5.0.0",
+        "husky": "^2.2.0",
+        "jasmine-core": "~3.4.0",
+        "jasmine-spec-reporter": "~4.2.1",
+        "karma": "~4.0.1",
+        "karma-chrome-launcher": "~2.2.0",
+        "karma-coverage-istanbul-reporter": "~2.0.5",
+        "karma-jasmine": "~2.0.1",
+        "karma-jasmine-html-reporter": "^1.4.0",
+        "ng-packagr": "^5.0.1",
+        "prettier": "1.16.4",
+        "pretty-quick": "^1.10.0",
+        "protractor": "~5.4.2",
+        "ts-node": "~8.0.3",
+        "tsickle": "^0.34.3",
+        "tslib": "^1.9.0",
+        "tslint": "~5.15.0",
+        "typescript": "^3.2.4"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "pretty-quick --staged"
+        }
     }
-  },
-  "lint-staged": {
-    "*.{js,json,css,md}": [
-      "prettier --write",
-      "git add"
-    ]
-  }
 }
