@@ -87,7 +87,7 @@ export function OnPageVisible(): MethodDecorator {
         const originalNgOnInit = target.ngOnInit;
         let onPageVisibleSubscription: Subscription;
         target.ngOnInit = function(...args) {
-            onPageVisibleSubscription = pageVisibilityService.$onPageHidden.subscribe(
+            onPageVisibleSubscription = pageVisibilityService.$onPageVisible.subscribe(
                 () => originalMethod.call(this)
             );
             if (originalNgOnInit) {
