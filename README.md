@@ -1,6 +1,7 @@
 # Angular Page Visibility
 
 ## Getting started
+
 First, install it.
 
 ```bash
@@ -16,17 +17,12 @@ import { AppComponent } from './app.component';
 import { AngularPageVisibilityModule } from 'angular-page-visibility';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AngularPageVisibilityModule
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, AngularPageVisibilityModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
 ```
 
 Finally, decorate your component:
@@ -89,15 +85,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 ## Angular support
 
-Supports Angular > 6.
-
-For Angular 4 to 5 use :
-
-```bash
-npm install --save angular-page-visibility@4.0.13
-```
-
-[Documentation for angular-page-visibility@4.0.13](https://github.com/olivierlsc/angular-page-visibility/tree/v4.0.13)
+Supports Angular from 6 to 9.
 
 ## Features and API
 
@@ -109,18 +97,19 @@ npm install --save angular-page-visibility@4.0.13
 - [AngularPageVisibilityService](./wiki/page-visibility.service.md)
 
 ## For any questions, suggestions, or feature requests
+
 [Please file an issue](https://github.com/olivierlsc/angular-page-visibility/issues)!
 
 ## License
 
 License under the MIT License (MIT)
 
-Copyright © 2017-2019 [Olivier LIN-SI-CHENG](https://www.olivierlinsicheng.com)
+Copyright © 2017-2020 [Olivier LIN-SI-CHENG](https://www.olivierlinsicheng.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
