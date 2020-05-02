@@ -23,13 +23,8 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.less"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.less"],
             "scripts": []
           },
           "configurations": {
@@ -82,26 +77,16 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "src/styles.less"
-            ],
+            "styles": ["src/styles.less"],
             "scripts": [],
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ]
+            "assets": ["src/favicon.ico", "src/assets"]
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["src/tsconfig.app.json", "src/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -126,9 +111,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -147,9 +130,10 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/angular-page-visibility-lib/ng-package.prod.json"
-            ,              "tsConfig": "projects/angular-page-visibility-lib/tsconfig.lib.prod.json"
-}
+              "tsConfig": "projects/angular-page-visibility-lib/tsconfig.lib.prod.json",
+              "project": "projects/angular-page-visibility-lib/ng-package.prod.json",
+              "tsConfig": "projects/angular-page-visibility-lib/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -167,13 +151,14 @@
               "projects/angular-page-visibility-lib/tsconfig.lib.json",
               "projects/angular-page-visibility-lib/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
     }
   },
-  "defaultProject": "angular-page-visibility-app"
+  "defaultProject": "angular-page-visibility-app",
+  "cli": {
+    "analytics": "63f49321-814b-4232-ae7c-5f50db104d74"
+  }
 }

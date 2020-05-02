@@ -1,24 +1,38 @@
-import { Provider, ReflectiveInjector } from '@angular/core';
+import { Injector, StaticProvider } from '@angular/core';
 import { AngularPageVisibilityService } from './angular-page-visibility.service';
 import { AngularPageVisibilityStateEnum } from './angular-page-visibility.state.enum';
 import { Subscription } from 'rxjs';
 
-const providers: Provider[] = [ AngularPageVisibilityService ];
-const injector = ReflectiveInjector.resolveAndCreate( providers );
-const pageVisibilityService = injector.get( AngularPageVisibilityService );
+const providers: StaticProvider[] = [
+  { provide: AngularPageVisibilityService, deps: [] },
+];
+const injector = Injector.create({ providers: providers });
+const pageVisibilityService = injector.get(AngularPageVisibilityService);
 
-export function OnPageVisibilityChange (): MethodDecorator {
-  return function ( target: any , propertyKey: string , descriptor: PropertyDescriptor ) {
+export function OnPageVisibilityChange(): MethodDecorator {
+  return function(
+    target: any,
+    propertyKey: string,
+    descriptor: PropertyDescriptor,
+  ) {
     const originalMethod = descriptor.value;
-    const originalNgOnInit = target.ngOnInit;
     let onPageHiddenSubscription: Subscription;
+    if (!target.ngOnInit) {
+      buildNewMethodNgOnInit(target);
+    }
+    const originalNgOnInit = target.ngOnInit;
     target.ngOnInit = function(...args) {
-      onPageHiddenSubscription = pageVisibilityService.$onPageVisibilityChange
-      .subscribe( ( visibilityState: AngularPageVisibilityStateEnum ) => originalMethod.call(this, [ visibilityState ]));
+      onPageHiddenSubscription = pageVisibilityService.$onPageVisibilityChange.subscribe(
+        (visibilityState: AngularPageVisibilityStateEnum) =>
+          originalMethod.call(this, [visibilityState]),
+      );
       if (originalNgOnInit) {
         originalNgOnInit.call(this, args);
       }
     };
+    if (!target.ngOnDestroy) {
+      buildNewMethodNgOnDestroy(target);
+    }
     const originalNgOnDestroy = target.ngOnDestroy;
     target.ngOnDestroy = function(...args) {
       onPageHiddenSubscription.unsubscribe();
@@ -29,17 +43,29 @@ export function OnPageVisibilityChange (): MethodDecorator {
   };
 }
 
-export function OnPageHidden (): MethodDecorator {
-  return function ( target: any , propertyKey: string , descriptor: PropertyDescriptor ) {
+export function OnPageHidden(): MethodDecorator {
+  return function(
+    target: any,
+    propertyKey: string,
+    descriptor: PropertyDescriptor,
+  ) {
     const originalMethod = descriptor.value;
-    const originalNgOnInit = target.ngOnInit;
     let onPageHiddenSubscription: Subscription;
+    if (!target.ngOnInit) {
+      buildNewMethodNgOnInit(target);
+    }
+    const originalNgOnInit = target.ngOnInit;
     target.ngOnInit = function(...args) {
-      onPageHiddenSubscription = pageVisibilityService.$onPageHidden.subscribe(() => originalMethod.call(this));
+      onPageHiddenSubscription = pageVisibilityService.$onPageHidden.subscribe(
+        () => originalMethod.call(this),
+      );
       if (originalNgOnInit) {
         originalNgOnInit.call(this, args);
       }
     };
+    if (!target.ngOnDestroy) {
+      buildNewMethodNgOnDestroy(target);
+    }
     const originalNgOnDestroy = target.ngOnDestroy;
     target.ngOnDestroy = function(...args) {
       onPageHiddenSubscription.unsubscribe();
@@ -50,17 +76,29 @@ export function OnPageHidden (): MethodDecorator {
   };
 }
 
-export function OnPageVisible (): MethodDecorator {
-  return function ( target: any , propertyKey: string , descriptor: PropertyDescriptor ) {
+export function OnPageVisible(): MethodDecorator {
+  return function(
+    target: any,
+    propertyKey: string,
+    descriptor: PropertyDescriptor,
+  ) {
     const originalMethod = descriptor.value;
+    if (!target.ngOnInit) {
+      buildNewMethodNgOnInit(target);
+    }
     const originalNgOnInit = target.ngOnInit;
     let onPageVisibleSubscription: Subscription;
     target.ngOnInit = function(...args) {
-      onPageVisibleSubscription = pageVisibilityService.$onPageVisible.subscribe(() => originalMethod.call(this));
+      onPageVisibleSubscription = pageVisibilityService.$onPageVisible.subscribe(
+        () => originalMethod.call(this),
+      );
       if (originalNgOnInit) {
         originalNgOnInit.call(this, args);
       }
     };
+    if (!target.ngOnDestroy) {
+      buildNewMethodNgOnDestroy(target);
+    }
     const originalNgOnDestroy = target.ngOnDestroy;
     target.ngOnDestroy = function(...args) {
       onPageVisibleSubscription.unsubscribe();
@@ -71,17 +109,29 @@ export function OnPageVisible (): MethodDecorator {
   };
 }
 
-export function OnPagePrerender (): MethodDecorator {
-  return function ( target: any , propertyKey: string , descriptor: PropertyDescriptor ) {
+export function OnPagePrerender(): MethodDecorator {
+  return function(
+    target: any,
+    propertyKey: string,
+    descriptor: PropertyDescriptor,
+  ) {
     const originalMethod = descriptor.value;
-    const originalNgOnInit = target.ngOnInit;
     let onPagePrerenderSubscription: Subscription;
+    if (!target.ngOnInit) {
+      buildNewMethodNgOnInit(target);
+    }
+    const originalNgOnInit = target.ngOnInit;
     target.ngOnInit = function(...args) {
-      onPagePrerenderSubscription = pageVisibilityService.$onPagePrerender.subscribe(() => originalMethod.call(this));
+      onPagePrerenderSubscription = pageVisibilityService.$onPagePrerender.subscribe(
+        () => originalMethod.call(this),
+      );
       if (originalNgOnInit) {
         originalNgOnInit.call(this, args);
       }
     };
+    if (!target.ngOnDestroy) {
+      buildNewMethodNgOnDestroy(target);
+    }
     const originalNgOnDestroy = target.ngOnDestroy;
     target.ngOnDestroy = function(...args) {
       onPagePrerenderSubscription.unsubscribe();
@@ -92,17 +142,29 @@ export function OnPagePrerender (): MethodDecorator {
   };
 }
 
-export function OnPageUnloaded (): MethodDecorator {
-  return function ( target: any , propertyKey: string , descriptor: PropertyDescriptor ) {
+export function OnPageUnloaded(): MethodDecorator {
+  return function(
+    target: any,
+    propertyKey: string,
+    descriptor: PropertyDescriptor,
+  ) {
     const originalMethod = descriptor.value;
-    const originalNgOnInit = target.ngOnInit;
     let onPageUnloadedSubscription: Subscription;
+    if (!target.ngOnInit) {
+      buildNewMethodNgOnInit(target);
+    }
+    const originalNgOnInit = target.ngOnInit;
     target.ngOnInit = function(...args) {
-      onPageUnloadedSubscription = pageVisibilityService.$onPageUnloaded.subscribe(() => originalMethod.call(this));
+      onPageUnloadedSubscription = pageVisibilityService.$onPageUnloaded.subscribe(
+        () => originalMethod.call(this),
+      );
       if (originalNgOnInit) {
         originalNgOnInit.call(this, args);
       }
     };
+    if (!target.ngOnDestroy) {
+      buildNewMethodNgOnDestroy(target);
+    }
     const originalNgOnDestroy = target.ngOnDestroy;
     target.ngOnDestroy = function(...args) {
       onPageUnloadedSubscription.unsubscribe();
@@ -111,4 +173,19 @@ export function OnPageUnloaded (): MethodDecorator {
       }
     };
   };
+}
+
+function buildNewMethodNgOnInit(target: any) {
+  newMethod(target, 'ngOnInit');
+}
+
+function buildNewMethodNgOnDestroy(target: any) {
+  newMethod(target, 'ngOnDestroy');
+}
+
+function newMethod(target: any, name: string) {
+  Object.defineProperty(target, name, {
+    value: function(...args) {},
+    writable: true,
+  });
 }
