@@ -8,7 +8,19 @@ First, install it.
 npm install --save angular-page-visibility@latest
 ```
 
-Then, import it into your `@NgModule`:
+And disable Ivy in **tsconfig.json** :
+
+```json
+{
+  ...
+  "angularCompilerOptions": {
+    ...
+    "enableIvy": false
+  }
+}
+```
+
+Then, import it into your `@NgModule` :
 
 ```ts
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,7 +37,7 @@ import { AngularPageVisibilityModule } from 'angular-page-visibility';
 export class AppModule {}
 ```
 
-Finally, decorate your component:
+Finally, decorate your component :
 
 ```ts
 import { Component, OnInit, OnDestroy } from '@angular/core';
