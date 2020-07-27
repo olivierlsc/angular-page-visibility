@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
 import { AngularPageVisibilityStateEnum } from "./angular-page-visibility.state.enum";
+import {isPlatformServer} from '@angular/common';
 
 class HiddenKeyConstant {
   static DEFAULT = "hidden";
@@ -40,7 +41,7 @@ export class AngularPageVisibilityService {
     AngularPageVisibilityStateEnum
   > = this.onPageVisibilityChangeSource.asObservable();
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.addEventListenerVibilityChange();
   }
 
@@ -92,6 +93,10 @@ export class AngularPageVisibilityService {
   }
 
   private addEventListenerVibilityChange(): void {
+    if (isPlatformServer(this.platformId)) {
+      return;
+    }
+
     this.defineBrowserSupport();
     document.addEventListener(
       this.visibilityChange,
