@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import { Observable, Subject } from "rxjs";
 import { AngularPageVisibilityStateEnum } from "./angular-page-visibility.state.enum";
 import {isPlatformServer} from '@angular/common';
