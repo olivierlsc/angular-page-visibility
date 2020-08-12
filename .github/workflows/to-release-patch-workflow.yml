@@ -18,4 +18,4 @@ jobs:
           npm run release:patch
       - name: Push new tag
         run: |
-          - git push --follow-tags https://${{ secrets.MY_LOGIN }}:${{ secrets.MY_GITHUB_TOKEN }}@github.com/olivierlsc/angular-page-visibility.git HEAD:${{ GITHUB_REF }}
+          git push --follow-tags https://${{ secrets.MY_LOGIN }}:${{ secrets.MY_GITHUB_TOKEN }}@github.com/olivierlsc/angular-page-visibility.git HEAD:${{ GITHUB_REF }}
