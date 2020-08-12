@@ -1,0 +1,11 @@
+name: TO_RELEASE_PATCH
+on: workflow_dispatch
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checks-out repository
+        uses: actions/checkout@v2
+      - name: Release patch
+        run: |
+          npm run release:patch
