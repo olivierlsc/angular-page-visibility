@@ -9,6 +9,13 @@ jobs:
       - name: Install
         run: |
           npm install
+      - name: Init git identity
+        run: |
+          git config --global user.email "${{ secrets.MY_EMAIL }}"
+          git config --global user.name "${{ secrets.MY_NAME }}"
       - name: Release patch
         run: |
           npm run release:patch
+      - name: Push new tag
+        run: |
+          - git push --follow-tags https://${{ secrets.MY_LOGIN }}:${{ secrets.MY_GITHUB_TOKEN }}@github.com/olivierlsc/angular-page-visibility.git HEAD:${{ GITHUB_REF }}
