@@ -1,7 +1,7 @@
 name: TO_RELEASE_MAJOR
 on: workflow_dispatch
 jobs:
-  version:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checks-out repository
@@ -9,6 +9,27 @@ jobs:
       - name: Install
         run: |
           npm install
+      - name: Init git identity
+        run: |
+          git config --global user.email "${{ secrets.MY_EMAIL }}"
+          git config --global user.name "${{ secrets.MY_NAME }}"
       - name: Release major
         run: |
           npm run release:major
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+      - name: Push new tag
+        run: |
+          git push --follow-tags https://${{ secrets.MY_LOGIN }}:${{ secrets.MY_GITHUB_TOKEN }}@github.com/olivierlsc/angular-page-visibility.git HEAD:${{ steps.extract_branch.outputs.branch }}
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Build lib
+        run: |
+          npm run build:lib
+      - run: Publish lib on NPM registry
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

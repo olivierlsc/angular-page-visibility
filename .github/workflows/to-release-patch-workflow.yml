@@ -23,3 +23,13 @@ jobs:
       - name: Push new tag
         run: |
           git push --follow-tags https://${{ secrets.MY_LOGIN }}:${{ secrets.MY_GITHUB_TOKEN }}@github.com/olivierlsc/angular-page-visibility.git HEAD:${{ steps.extract_branch.outputs.branch }}
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Build lib
+        run: |
+          npm run build:lib
+      - run: Publish lib on NPM registry
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
