@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 9.0.1 (2020-08-12)
+
+
+### Features
+
+* **ci/cd:** add push tags ([8157958](https://github.com/olivierlsc/angular-page-visibility/commit/8157958c686729bffcf248820bf9f799324a2875))
+
 ## [9.0.0](https://github.com/olivierlsc/angular-page-visibility/compare/v6.1.4...v9.0.0) (2020-05-02)
 
 ### Features
