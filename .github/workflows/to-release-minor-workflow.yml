@@ -6,6 +6,9 @@ jobs:
     steps:
       - name: Checks-out repository
         uses: actions/checkout@v2
+      - name: Install
+        run: |
+          npm install
       - name: Release minor
         run: |
           npm run release:minor

@@ -11,15 +11,16 @@ jobs:
     steps:
       - name: Checks-out repository
         uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: 'https://registry.npmjs.org'
       - name: Install
         run: |
           npm install
-      - name: Build
+      - name: Build lib
         run: |
           npm run build:lib
-  publish:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Publish on NPM Registry
-        run: |
-          npm run publish
+      - run: Publish lib on NPM registry
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
