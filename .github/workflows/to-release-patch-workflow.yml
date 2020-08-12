@@ -16,6 +16,10 @@ jobs:
       - name: Release patch
         run: |
           npm run release:patch
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
       - name: Push new tag
         run: |
-          git push --follow-tags https://${{ secrets.MY_LOGIN }}:${{ secrets.MY_GITHUB_TOKEN }}@github.com/olivierlsc/angular-page-visibility.git HEAD:${{ GITHUB_REF }}
+          git push --follow-tags https://${{ secrets.MY_LOGIN }}:${{ secrets.MY_GITHUB_TOKEN }}@github.com/olivierlsc/angular-page-visibility.git HEAD:${{ steps.extract_branch.outputs.branch }}
