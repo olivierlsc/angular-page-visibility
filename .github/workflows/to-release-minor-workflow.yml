@@ -30,6 +30,8 @@ jobs:
       - name: Build lib
         run: |
           npm run build:lib
-      - run: Publish lib on NPM registry
+      - name: Publish lib on NPM registry
+        run: |
+          npm run publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
