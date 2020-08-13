@@ -6,6 +6,10 @@ jobs:
     steps:
       - name: Checks-out repository
         uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: 'https://registry.npmjs.org'
       - name: Install
         run: |
           npm install
@@ -23,10 +27,6 @@ jobs:
       - name: Push new tag
         run: |
           git push --follow-tags https://${{ secrets.MY_LOGIN }}:${{ secrets.MY_GITHUB_TOKEN }}@github.com/olivierlsc/angular-page-visibility.git HEAD:${{ steps.extract_branch.outputs.branch }}
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-          registry-url: 'https://registry.npmjs.org'
       - name: Build lib
         run: |
           npm run build:lib
