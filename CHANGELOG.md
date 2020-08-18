@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 9.0.6 (2020-08-18)
+
+
+### Features
+
+* Add Angular Universal Support ([8438815](https://github.com/olivierlsc/angular-page-visibility/commit/843881540da39c61d0bede1aa5acb67f343a9531))
+
 ### 9.0.5 (2020-08-13)
 
 ### 9.0.4 (2020-08-13)
