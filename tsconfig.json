@@ -17,9 +17,5 @@
       "angular-page-visibility": ["dist/angular-page-visibility"],
       "angular-page-visibility/*": ["dist/angular-page-visibility/*"]
     }
-  },
-  "angularCompilerOptions": {
-    "preserveWhitespaces": false,
-    "enableIvy": false
   }
 }

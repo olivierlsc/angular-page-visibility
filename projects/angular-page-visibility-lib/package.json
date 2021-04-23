@@ -16,10 +16,8 @@
     "angular7",
     "angular8",
     "angular9",
-    "ng6",
-    "ng7",
-    "ng8",
-    "ng9",
+    "angular10",
+    "angular11",
     "page visibility",
     "page not visibility",
     "page visibility api",
@@ -27,8 +25,8 @@
     "page not active"
   ],
   "peerDependencies": {
-    "@angular/common": ">=6.0.0 <10",
-    "@angular/core": ">=6.0.0 <10",
+    "@angular/common": ">=6.0.0 <12",
+    "@angular/core": ">=6.0.0 <12",
     "rxjs": ">=6.0.0 <7"
   }
 }

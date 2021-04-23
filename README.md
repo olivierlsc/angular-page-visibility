@@ -8,18 +8,6 @@ First, install it.
 npm install --save angular-page-visibility@latest
 ```
 
-And disable Ivy in **tsconfig.json** :
-
-```json
-{
-  ...
-  "angularCompilerOptions": {
-    ...
-    "enableIvy": false
-  }
-}
-```
-
 Then, import it into your `@NgModule` :
 
 ```ts
@@ -97,7 +85,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 ## Angular support
 
-Supports Angular from 6 to 9.
+Supports Angular 11 and old versions.
 
 ## Features and API
 
