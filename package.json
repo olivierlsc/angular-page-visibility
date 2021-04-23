@@ -1,6 +1,6 @@
 {
   "name": "angular-page-visibility-app",
-  "version": "9.0.6",
+  "version": "11.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",

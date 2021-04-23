@@ -2,12 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### 9.0.6 (2020-08-18)
-
+## [11.0.0](https://github.com/olivierlsc/angular-page-visibility/compare/9.0.6...11.0.0) (2021-04-23)
 
 ### Features
 
-* Add Angular Universal Support ([8438815](https://github.com/olivierlsc/angular-page-visibility/commit/843881540da39c61d0bede1aa5acb67f343a9531))
+- **ng11:** update to ng11 version ([3a82d69](https://github.com/olivierlsc/angular-page-visibility/commit/3a82d6977fa295146544c45c8ba9cd94c4b82444))
+
+### 9.0.6 (2020-08-18)
+
+### Features
+
+- Add Angular Universal Support ([8438815](https://github.com/olivierlsc/angular-page-visibility/commit/843881540da39c61d0bede1aa5acb67f343a9531))
 
 ### 9.0.5 (2020-08-13)
 
@@ -19,10 +24,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### 9.0.1 (2020-08-12)
 
-
 ### Features
 
-* **ci/cd:** add push tags ([8157958](https://github.com/olivierlsc/angular-page-visibility/commit/8157958c686729bffcf248820bf9f799324a2875))
+- **ci/cd:** add push tags ([8157958](https://github.com/olivierlsc/angular-page-visibility/commit/8157958c686729bffcf248820bf9f799324a2875))
 
 ## [9.0.0](https://github.com/olivierlsc/angular-page-visibility/compare/v6.1.4...v9.0.0) (2020-05-02)
 
