@@ -19,6 +19,8 @@
     "angular10",
     "angular11",
     "angular12",
+    "angular13",
+    "angular14",
     "page visibility",
     "page not visibility",
     "page visibility api",
@@ -26,8 +28,8 @@
     "page not active"
   ],
   "peerDependencies": {
-    "@angular/common": ">=6.0.0 <13",
-    "@angular/core": ">=6.0.0 <13",
+    "@angular/common": ">=6.0.0 <15",
+    "@angular/core": ">=6.0.0 <15",
     "rxjs": ">=6.0.0 <7"
   }
 }

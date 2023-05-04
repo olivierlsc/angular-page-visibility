@@ -137,7 +137,6 @@
       }
     }
   },
-  "defaultProject": "angular-page-visibility-app",
   "cli": {
     "analytics": "63f49321-814b-4232-ae7c-5f50db104d74"
   }
