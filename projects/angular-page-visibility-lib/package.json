@@ -1,6 +1,6 @@
 {
   "name": "angular-page-visibility",
-  "version": "11.0.0",
+  "version": "16.0.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -18,6 +18,11 @@
     "angular9",
     "angular10",
     "angular11",
+    "angular12",
+    "angular13",
+    "angular14",
+    "angular15",
+    "angular16",
     "page visibility",
     "page not visibility",
     "page visibility api",
@@ -25,8 +30,8 @@
     "page not active"
   ],
   "peerDependencies": {
-    "@angular/common": ">=6.0.0 <12",
-    "@angular/core": ">=6.0.0 <12",
-    "rxjs": ">=6.0.0 <7"
+    "@angular/common": ">=6.0.0 <17",
+    "@angular/core": ">=6.0.0 <17",
+    "rxjs": ">=6.0.0 <8"
   }
 }
