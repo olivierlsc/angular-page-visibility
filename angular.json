@@ -113,7 +113,7 @@
       "prefix": "apvl",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/angular-page-visibility-lib/tsconfig.lib.json",
             "project": "projects/angular-page-visibility-lib/ng-package.json"
@@ -121,8 +121,7 @@
           "configurations": {
             "production": {
               "tsConfig": "projects/angular-page-visibility-lib/tsconfig.lib.prod.json",
-              "project": "projects/angular-page-visibility-lib/ng-package.prod.json",
-              "tsConfig": "projects/angular-page-visibility-lib/tsconfig.lib.prod.json"
+              "project": "projects/angular-page-visibility-lib/ng-package.prod.json"
             }
           }
         },
